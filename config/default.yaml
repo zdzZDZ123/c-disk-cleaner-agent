@@ -1,0 +1,94 @@
+# C盘清理工具默认配置
+
+# AI服务配置
+ai:
+  # Gemini API密钥 - 请替换为您的实际API密钥
+  gemini_api_key: "AIzaSyAkT9xwYlDjgT8cyqFefDjpEMTeHDd2wIY"
+      # Qwen API密钥 - 请替换为您的实际API密钥
+  qwen_api_key: "sk-50250ca510ef4a84b1b7930ad810d481"
+
+# 常规设置
+general:
+  language: "zh-CN"                  # 界面语言
+  auto_start: false                  # 开机自启动
+  check_update: true                 # 自动检查更新
+
+# 扫描设置
+scanner:
+  exclude_dirs:                      # 排除扫描的目录
+    - "C:\\Windows"
+    - "C:\\Program Files"
+    - "C:\\Program Files (x86)"
+  include_dirs:                      # 默认包含扫描的目录
+    - "C:\\Users"
+    - "C:\\Temp"
+  recursive: true                    # 是否递归扫描子目录
+  follow_links: false                # 是否跟踪符号链接
+  skip_hidden: true                  # 是否跳过隐藏文件
+  max_depth: 10                      # 最大扫描深度
+  # 新增：重复文件扫描设置
+  find_duplicates: true              # 是否查找重复文件
+  duplicate_min_size_mb: 1           # 查找重复文件的最小大小(MB)
+
+# 清理规则
+rules:
+  temp_files:                        # 临时文件清理
+    enabled: true
+    patterns:
+      - "*.tmp"
+      - "*.temp"
+      - "~*"
+      - "*.bak"
+    scan_only: true              # 默认只扫描，不自动删除
+  browser_cache:                     # 浏览器缓存清理
+    enabled: true
+    chrome:
+      enabled: true
+      paths:
+        - "%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Cache"
+    edge:
+      enabled: true
+      paths:
+        - "%LOCALAPPDATA%\\Microsoft\\Edge\\User Data\\Default\\Cache"
+  windows_cache:                     # Windows缓存清理
+    enabled: true
+    paths:
+      - "C:\\Windows\\Temp"
+      - "%TEMP%"
+      - "%SYSTEMROOT%\\SoftwareDistribution\\Download"
+  recycle_bin:                       # 回收站清理
+    enabled: false                   # 默认不清理回收站
+  large_files:                       # 大文件清理
+    enabled: true
+    min_size_mb: 1000                # 最小大小(MB)
+    scan_only: true                  # 仅扫描不自动删除
+  duplicate_files:
+    enabled: true
+    scan_only: true              # 默认只扫描，不自动删除
+    keep_strategy: "first"         # 保留策略: first(第一个), newest(最新), oldest(最旧)
+
+# 时间设置
+schedule:
+  auto_scan:                         # 自动扫描
+    enabled: false
+    interval_days: 7                 # 间隔天数
+  auto_clean:                        # 自动清理
+    enabled: false
+    interval_days: 14                # 间隔天数
+  scan_on_low_disk:                  # 磁盘空间不足时扫描
+    enabled: true
+    threshold_percent: 10            # 阈值百分比
+
+# 安全设置
+safety:
+  backup:                            # 备份设置
+    enabled: true                    # 清理前备份
+    retention_days: 30               # 保留天数
+  confirmation:                      # 确认设置
+    ask_before_delete: true          # 删除前确认
+    show_preview: true               # 显示预览
+
+# API设置
+api:
+  gemini:
+    project_id: "2803e41d56e6486bb7ab3da5f666662b"        # Gemini项目编号
