@@ -1,1 +1,0 @@
-python app_new.py ai-plan --goal "清理我的C盘临时文件"python app_new.py ai-plan --goal "清理我的C盘临时文件"

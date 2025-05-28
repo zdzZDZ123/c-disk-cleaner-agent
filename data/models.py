@@ -9,6 +9,7 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Dict, Optional, Union
 from pydantic import BaseModel, Field
+from dataclasses import dataclass
 
 
 class FileType(str, Enum):
@@ -36,7 +37,49 @@ class CleanCategory(str, Enum):
     OLD_FILES = "old_files"             # 旧文件
     DUPLICATE_FILES = "duplicate_files" # 重复文件
     RECYCLE_BIN = "recycle_bin"         # 回收站
+    LOG_FILES = "log_files"             # 日志文件
+    SYSTEM_CACHE = "system_cache"       # 系统缓存
+    DOWNLOAD_TEMP = "download_temp"     # 下载临时文件
+    DEVELOPMENT_CACHE = "development_cache" # 开发工具缓存
     OTHER = "other"                     # 其他
+
+
+@dataclass
+class FileItem:
+    path: str
+    size: int = 0
+    mtime: float = 0.0
+    hash: Optional[str] = None
+
+
+@dataclass
+class ScanResult:
+    garbage_dirs: List[str]
+    large_files: List[FileItem]
+    duplicate_images: List[str]
+    blurry_images: List[str]
+
+
+@dataclass
+class CleanTask:
+    task_id: str
+    items: List[FileItem]
+    status: str = "pending"
+
+
+@dataclass
+class BackupInfo:
+    backup_path: str
+    original_path: str
+    time: float
+
+
+@dataclass
+class LogEntry:
+    time: float
+    level: str
+    message: str
+
 
 
 class FileItem(BaseModel):
@@ -52,6 +95,10 @@ class FileItem(BaseModel):
     is_hidden: bool = False                       # 是否隐藏
     can_delete: bool = True                       # 是否可删除
     attributes: Dict = Field(default_factory=dict)# 文件属性
+    clean_safety: str = "confirm"                 # 清理安全性: safe/confirm/forbid
+    content_hash: Optional[str] = None            # 文件内容hash（如图片感知hash、视频hash等）
+    content_summary: Optional[str] = None         # 文件内容摘要/描述
+    access_count: Optional[int] = None            # 访问次数
     
     class Config:
         arbitrary_types_allowed = True
@@ -70,6 +117,8 @@ class ScanResult(BaseModel):
     exclude_paths: List[str] = Field(default_factory=list)              # 排除路径
     is_complete: bool = False                                          # 扫描是否完成
     duplicate_sets: List[List[str]] = Field(default_factory=list)      # 重复文件集 (路径列表)
+    duplicate_images: List[List[str]] = Field(default_factory=list)    # 重复图片集 (路径列表)
+    blurry_images: List[str] = Field(default_factory=list)             # 模糊图片路径列表
     
     class Config:
         arbitrary_types_allowed = True
@@ -136,4 +185,4 @@ class LogEntry(BaseModel):
     details: Dict = Field(default_factory=dict)   # 详细信息
     
     class Config:
-        arbitrary_types_allowed = True 
+        arbitrary_types_allowed = True

@@ -6,16 +6,15 @@
 """
 
 import uuid
-import time # Added
-from typing import List, Dict, Optional, Union, Any, Tuple # Added Tuple
+import time
+from typing import List, Dict, Optional, Union, Any, Tuple
 from datetime import datetime
 from pathlib import Path
-import uuid # Added for AI task IDs
-from loguru import logger # Keep global logger for fallback
+from loguru import logger
 
 # New imports
 from services.ai_planner import AIPlannerService
-from services.logger import LoggerService # Added LoggerService
+# from services.logger import LoggerService # Moved to avoid circular import
 
 from core.scanner import Scanner
 from core.cleaner import Cleaner
@@ -37,11 +36,17 @@ class TaskManager:
             database: 数据库实例，如果为None则创建新实例
             ai_planner_service: AI规划服务实例，如果为None则尝试创建新实例
         """
+        # 类型检查和自动转换
+        if isinstance(config_manager, str):
+            config_manager = ConfigManager(config_manager)
+        elif config_manager is not None and not isinstance(config_manager, ConfigManager):
+            config_manager = ConfigManager()
         self.config = config_manager or ConfigManager()
         self.db = database or Database()
 
         # 初始化日志服务和任务管理器的日志记录器
         try:
+            from services.logger import LoggerService  # Delayed import to avoid circular import
             self.logger_service = LoggerService(config_manager=self.config, database=self.db)
             self.logger = self.logger_service.get_logger(__name__)
         except Exception as e:
@@ -112,6 +117,33 @@ class TaskManager:
 
         self.logger.info(f"AI规划任务 {self.current_ai_task_id} 收到AI计划: {plan}")
         
+        # === 本地补全 action 字段 ===
+        import os
+        compress_exts = ('.zip', '.rar', '.7z', '.tar', '.gz', '.bz2', '.xz', '.iso', '.cab', '.arj', '.lzh', '.z', '.ace', '.uue', '.jar', '.apk', '.tar.gz', '.tar.bz2', '.tar.xz')
+        for step in plan.get("steps", []):
+            if "action" not in step or not step["action"]:
+                path = step.get("path")
+                safety = step.get("safety")
+                if not path or safety == "forbid":
+                    step["action"] = None
+                elif os.path.isdir(path):
+                    step["action"] = "delete_dir"
+                elif os.path.isfile(path):
+                    step["action"] = "delete_file"
+                elif isinstance(path, str) and path.lower().endswith(compress_exts):
+                    step["action"] = "delete_file"
+                else:
+                    # 路径不存在，无法判断，action为None
+                    step["action"] = None
+
+        # === 聊天功能：如果steps为空，尝试输出chat内容 ===
+        if not plan.get("steps"):
+            chat = plan.get("chat")
+            if chat:
+                self.logger.info(f"AI聊天内容: {chat}")
+            else:
+                self.logger.info("AI未提供清理建议，请检查输入或重试。")
+
         last_scan_id: Optional[str] = None # To store the ID of the most recent scan action
 
         for step_num, step in enumerate(plan.get("steps", [])):
@@ -193,6 +225,133 @@ class TaskManager:
                             self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: AI步骤 '{action}': 未找到扫描 {last_scan_id} 的结果以建议删除。")
                     else:
                         self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: AI步骤 '{action}': 没有可用的扫描ID来建议删除。")
+                
+                elif action == "delete":
+                    # 兼容AI直接输出的delete动作
+                    path = step.get("path")
+                    older_than_days = step.get("older_than_days", 90)
+                    if not path:
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 'delete' 缺少 path，跳过。")
+                        continue
+                    try:
+                        import os
+                        import shutil
+                        import time
+                        from datetime import datetime, timedelta
+                        if os.path.isdir(path):
+                            # 只删除目录下90天前的文件/子目录
+                            cutoff = time.time() - older_than_days * 24 * 3600
+                            deleted_count = 0
+                            for root, dirs, files in os.walk(path):
+                                for name in files:
+                                    file_path = os.path.join(root, name)
+                                    try:
+                                        if os.path.getmtime(file_path) < cutoff:
+                                            os.remove(file_path)
+                                            deleted_count += 1
+                                            self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已删除旧文件 {file_path}")
+                                    except Exception as e:
+                                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 删除文件 {file_path} 失败: {e}")
+                                for name in dirs:
+                                    dir_path = os.path.join(root, name)
+                                    try:
+                                        if os.path.getmtime(dir_path) < cutoff:
+                                            shutil.rmtree(dir_path, ignore_errors=True)
+                                            deleted_count += 1
+                                            self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已删除旧目录 {dir_path}")
+                                    except Exception as e:
+                                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 删除目录 {dir_path} 失败: {e}")
+                            self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 目录 {path} 下共删除 {deleted_count} 个90天前的文件/目录")
+                        else:
+                            # 单文件直接删除
+                            if os.path.exists(path):
+                                if os.path.getmtime(path) < time.time() - older_than_days * 24 * 3600:
+                                    os.remove(path)
+                                    self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已删除旧文件 {path}")
+                                else:
+                                    self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 文件 {path} 未满90天，未删除")
+                    except Exception as e:
+                        self.logger.error(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 删除 {path} 失败: {e}")
+                
+                elif action == "delete_dir":
+                    # 删除目录操作
+                    path = step.get("path")
+                    force_delete = parameters.get("force_delete", False)
+                    create_backup = parameters.get("create_backup", True)
+                    
+                    if not path:
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 'delete_dir' 缺少 path，跳过。")
+                        continue
+                    
+                    if not os.path.exists(path):
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 目录 {path} 不存在，跳过。")
+                        continue
+                    
+                    if not os.path.isdir(path):
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: {path} 不是目录，跳过。")
+                        continue
+                    
+                    try:
+                        import os
+                        import shutil
+                        from pathlib import Path
+                        
+                        # 创建备份（如果启用）
+                        if create_backup:
+                            backup_dir = self.config.get("safety.backup.directory", "./backups")
+                            backup_path = os.path.join(backup_dir, f"backup_{os.path.basename(path)}_{int(time.time())}")
+                            os.makedirs(backup_dir, exist_ok=True)
+                            shutil.copytree(path, backup_path)
+                            self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已创建目录备份: {backup_path}")
+                        
+                        # 删除目录
+                        if force_delete:
+                            shutil.rmtree(path, ignore_errors=True)
+                        else:
+                            shutil.rmtree(path)
+                        
+                        self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已删除目录 {path}")
+                        
+                    except Exception as e:
+                        self.logger.error(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 删除目录 {path} 失败: {e}")
+                
+                elif action == "delete_file":
+                    # 删除文件操作
+                    path = step.get("path")
+                    create_backup = parameters.get("create_backup", True)
+                    
+                    if not path:
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 'delete_file' 缺少 path，跳过。")
+                        continue
+                    
+                    if not os.path.exists(path):
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 文件 {path} 不存在，跳过。")
+                        continue
+                    
+                    if not os.path.isfile(path):
+                        self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: {path} 不是文件，跳过。")
+                        continue
+                    
+                    try:
+                        import os
+                        import shutil
+                        from pathlib import Path
+                        
+                        # 创建备份（如果启用）
+                        if create_backup:
+                            backup_dir = self.config.get("safety.backup.directory", "./backups")
+                            backup_filename = f"backup_{os.path.basename(path)}_{int(time.time())}"
+                            backup_path = os.path.join(backup_dir, backup_filename)
+                            os.makedirs(backup_dir, exist_ok=True)
+                            shutil.copy2(path, backup_path)
+                            self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已创建文件备份: {backup_path}")
+                        
+                        # 删除文件
+                        os.remove(path)
+                        self.logger.info(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 已删除文件 {path}")
+                        
+                    except Exception as e:
+                        self.logger.error(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 删除文件 {path} 失败: {e}")
                 
                 else:
                     self.logger.warning(f"AI规划任务 {self.current_ai_task_id} - 步骤 {step_num + 1}: 未知操作 '{action}'。正在跳过。")

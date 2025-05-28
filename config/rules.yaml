@@ -1,0 +1,19 @@
+rules:
+  - name: "系统临时文件"
+    pattern: "C:\\Windows\\Temp\\*"
+    category: "temp_files"
+    enabled: true
+    description: "清理系统临时文件夹下的所有文件"
+    keep_days: 0
+  - name: "用户下载目录大于90天"
+    pattern: "C:\\Users\\*\\Downloads\\*"
+    category: "downloads"
+    enabled: true
+    description: "清理用户下载目录下90天前的文件"
+    keep_days: 90
+  - name: "浏览器缓存"
+    pattern: "C:\\Users\\*\\AppData\\Local\\*\\Cache\\*"
+    category: "browser_cache"
+    enabled: true
+    description: "清理常见浏览器缓存目录"
+    keep_days: 0 

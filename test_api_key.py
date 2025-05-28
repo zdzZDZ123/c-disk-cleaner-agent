@@ -1,180 +1,145 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
-测试AI模型API密钥是否有效
-支持的模型：Gemini、Qwen
+API密钥测试脚本
+用于测试Qwen和Gemini API密钥的有效性
 """
 
+import argparse
 import os
 import sys
-import json
-import requests
 from pathlib import Path
 
-def load_api_keys_from_config():
-    """从配置文件加载所有API密钥"""
-    config_path = Path(os.path.expanduser('~')) / '.c_disk_cleaner' / 'config.yaml'
-    if not config_path.exists():
-        return {}
-        
+# 添加项目根目录到Python路径
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
+
+from services.ai_planner import AIPlannerService
+from config.manager import ConfigManager
+from services.logger import setup_logger
+
+def test_qwen_api(api_key):
+    """测试Qwen API密钥"""
     try:
-        import yaml
-        with open(config_path, 'r', encoding='utf-8') as f:
-            config = yaml.safe_load(f)
+        import dashscope
+        dashscope.api_key = api_key
         
-        api_keys = {}
-        if config and 'ai' in config:
-            # 加载Gemini API密钥
-            if 'gemini_api_key' in config['ai']:
-                gemini_key = config['ai']['gemini_api_key']
-                if gemini_key and gemini_key != 'YOUR_API_KEY_HERE':
-                    api_keys['gemini'] = gemini_key
+        # 测试API调用
+        response = dashscope.Generation.call(
+            model='qwen-turbo',
+            prompt='测试',
+            max_tokens=10
+        )
+        
+        if response.status_code == 200:
+            print("✅ Qwen API密钥有效")
+            return True
+        else:
+            print(f"❌ Qwen API调用失败: {response.message}")
+            return False
             
-            # 加载Qwen API密钥
-            if 'qwen_api_key' in config['ai']:
-                qwen_key = config['ai']['qwen_api_key']
-                if qwen_key and qwen_key != 'YOUR_API_KEY_HERE':
-                    api_keys['qwen'] = qwen_key
+    except ImportError:
+        print("❌ 缺少dashscope依赖，请运行: pip install dashscope")
+        return False
+    except Exception as e:
+        print(f"❌ Qwen API测试失败: {str(e)}")
+        return False
+
+def test_gemini_api(api_key):
+    """测试Gemini API密钥"""
+    try:
+        import google.generativeai as genai
+        genai.configure(api_key=api_key)
         
-        return api_keys
-    except Exception as e:
-        print(f"读取配置文件时出错: {e}", file=sys.stderr)
-    
-    return {}
-
-def test_gemini_api_key(api_key):
-    """测试Gemini API密钥是否有效"""
-    api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-    headers = {"Content-Type": "application/json"}
-    payload = {
-        "contents": [
-            {
-                "parts": [
-                    {"text": "Hello, Gemini!"}
-                ]
-            }
-        ]
-    }
-    params = {"key": api_key}
-    
-    try:
-        response = requests.post(api_url, headers=headers, params=params, data=json.dumps(payload))
-        if response.status_code == 200:
-            return True, "API密钥有效！"
+        # 测试API调用
+        model = genai.GenerativeModel('gemini-pro')
+        response = model.generate_content('测试')
+        
+        if response.text:
+            print("✅ Gemini API密钥有效")
+            return True
         else:
-            return False, f"API密钥无效。错误: {response.status_code} - {response.text}"
+            print("❌ Gemini API调用失败")
+            return False
+            
+    except ImportError:
+        print("❌ 缺少google-generativeai依赖，请运行: pip install google-generativeai")
+        return False
     except Exception as e:
-        return False, f"测试API密钥时出错: {e}"  # 详细异常输出
-
-def test_qwen_api_key(api_key):
-    """测试Qwen API密钥是否有效"""
-    api_url = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation"
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
-    }
-    payload = {
-        "model": "qwen-turbo",
-        "input": {
-            "messages": [
-                {"role": "user", "content": "Hello, Qwen!"}
-            ]
-        }
-    }
-    
-    try:
-        response = requests.post(api_url, headers=headers, json=payload)
-        if response.status_code == 200:
-            return True, "API密钥有效！"
-        else:
-            return False, f"API密钥无效。错误: {response.status_code} - {response.text}"
-    except Exception as e:
-        return False, f"测试API密钥时出错: {e}"  # 详细异常输出
+        print(f"❌ Gemini API测试失败: {str(e)}")
+        return False
 
 def main():
-    import argparse
+    parser = argparse.ArgumentParser(description='测试AI模型API密钥')
+    parser.add_argument('--model', choices=['qwen', 'gemini', 'all'], 
+                       default='all', help='要测试的模型')
     
-    # 创建命令行参数解析器
-    parser = argparse.ArgumentParser(description="测试AI模型API密钥是否有效")
-    parser.add_argument('--model', '-m', choices=['gemini', 'qwen', 'all'], 
-                        default='all', help="要测试的AI模型 (默认: all)")
     args = parser.parse_args()
     
-    # 获取所有API密钥
-    api_keys = {}
-    env_keys = {}
+    # 设置日志
+    logger = setup_logger()
     
-    # 从环境变量获取API密钥
-    if os.environ.get('GEMINI_API_KEY'):
-        env_keys['gemini'] = os.environ.get('GEMINI_API_KEY')
-    if os.environ.get('QWEN_API_KEY'):
-        env_keys['qwen'] = os.environ.get('QWEN_API_KEY')
+    # 加载配置
+    try:
+        config_manager = ConfigManager()
+        config = config_manager.get_config()
+    except Exception as e:
+        print(f"配置加载失败: {e}")
+        return False
     
-    # 从配置文件获取API密钥
-    config_keys = load_api_keys_from_config()
+    print("=== API密钥测试 ===")
     
-    # 合并环境变量和配置文件中的API密钥，环境变量优先
-    for model in ['gemini', 'qwen']:
-        if model in env_keys:
-            api_keys[model] = {'key': env_keys[model], 'source': '环境变量'}
-        elif model in config_keys:
-            api_keys[model] = {'key': config_keys[model], 'source': '配置文件'}
+    success = True
     
-    # 根据选择的模型进行测试
-    models_to_test = [args.model] if args.model != 'all' else ['gemini', 'qwen']
-    success_count = 0
-    test_count = 0
-    
-    print("\n===== AI模型API密钥测试 =====\n")
-    
-    for model in models_to_test:
-        if model not in api_keys:
-            print(f"⚠ {model.capitalize()} API密钥未设置")
-            print(f"  请通过以下方式之一设置{model.capitalize()}的API密钥:")
-            if model == 'gemini':
-                print("  1. 设置环境变量: $env:GEMINI_API_KEY=\"您的API密钥\"")
-                print("  2. 在config/default.yaml文件中设置: ai.gemini_api_key")
-            elif model == 'qwen':
-                print("  1. 设置环境变量: $env:QWEN_API_KEY=\"您的API密钥\"")
-                print("  2. 在config/default.yaml文件中设置: ai.qwen_api_key")
-            print()
-            continue
+    if args.model in ['qwen', 'all']:
+        print("\n测试Qwen API...")
         
-        test_count += 1
-        print(f"测试 {model.capitalize()} API密钥 (来自{api_keys[model]['source']})...")
+        # 从环境变量或配置文件获取API密钥
+        qwen_key = os.getenv('QWEN_API_KEY')
+        if not qwen_key and 'ai' in config and 'qwen_api_key' in config['ai']:
+            qwen_key = config['ai']['qwen_api_key']
         
-        if model == 'gemini':
-            success, message = test_gemini_api_key(api_keys[model]['key'])
-        elif model == 'qwen':
-            success, message = test_qwen_api_key(api_keys[model]['key'])
+        if qwen_key:
+            if not test_qwen_api(qwen_key):
+                success = False
         else:
-            print(f"未知模型: {model}", file=sys.stderr)
-            continue
-        
-        if success:
-            print(f"✓ {model.capitalize()}: {message}")
-            success_count += 1
-        else:
-            print(f"✗ {model.capitalize()}: {message}")
-        print()
+            print("❌ 未找到Qwen API密钥")
+            print("   请设置环境变量QWEN_API_KEY或在config/default.yaml中配置")
+            success = False
     
-    # 总结
-    if test_count == 0:
-        print("未找到任何API密钥进行测试!")
-        print("请在config/default.yaml文件中设置至少一个AI模型的API密钥")
-        print("或者通过环境变量设置相应的API密钥。")
-        print("\n详细说明请参考: README_AI_PLAN.md")
-        return 1
-    elif success_count > 0:
-        print(f"✓ 成功验证了 {success_count}/{test_count} 个API密钥")
-        print("现在您可以运行 'python app_new.py ai-plan' 命令了。")
-        return 0
+    if args.model in ['gemini', 'all']:
+        print("\n测试Gemini API...")
+        
+        # 从环境变量或配置文件获取API密钥
+        gemini_key = os.getenv('GEMINI_API_KEY')
+        if not gemini_key and 'ai' in config and 'gemini_api_key' in config['ai']:
+            gemini_key = config['ai']['gemini_api_key']
+        
+        if gemini_key:
+            if not test_gemini_api(gemini_key):
+                success = False
+        else:
+            print("❌ 未找到Gemini API密钥")
+            print("   请设置环境变量GEMINI_API_KEY或在config/default.yaml中配置")
+            success = False
+    
+    print("\n=== 测试完成 ===")
+    
+    if success:
+        print("✅ 所有测试通过")
+        return True
     else:
-        print("✗ 所有API密钥验证失败")
-        print("\n请检查您的API密钥是否正确，或者尝试获取新的API密钥。")
-        print("详细说明请参考: README_AI_PLAN.md")
-        return 1
+        print("❌ 部分测试失败，请检查API密钥配置")
+        print("\n配置方法:")
+        print("1. 环境变量:")
+        print("   set QWEN_API_KEY=your_qwen_key")
+        print("   set GEMINI_API_KEY=your_gemini_key")
+        print("\n2. 配置文件 (config/default.yaml):")
+        print("   ai:")
+        print("     qwen_api_key: 'your_qwen_key'")
+        print("     gemini_api_key: 'your_gemini_key'")
+        return False
 
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__ == '__main__':
+    success = main()
+    sys.exit(0 if success else 1)

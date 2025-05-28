@@ -82,6 +82,9 @@ class ConfigManager:
         Returns:
             配置值或默认值
         """
+        if not isinstance(self.config, dict):
+            self.config = {}
+            return default
         if '.' not in key:
             return self.config.get(key, default)
         

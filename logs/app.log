@@ -1,0 +1,1917 @@
+2025-05-25 20:28:28,394 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-25 20:28:28,394 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\AppData\Local\Temp: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,395 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-25 20:28:28,396 - root - ERROR - 遍历目录时出错 C:\$Recycle.Bin: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,396 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-25 20:28:28,397 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,399 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-25 20:28:28,400 - root - ERROR - 遍历目录时出错 C:\Windows\WinSxS\Backup: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,400 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-25 20:28:28,400 - root - ERROR - 遍历目录时出错 C:\Windows\System32\DriverStore\FileRepository: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,401 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-25 20:28:28,401 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\Downloads: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,401 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-25 20:28:28,401 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,402 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-25 20:28:28,402 - root - ERROR - 遍历目录时出错 C:\Windows\System32\LogFiles: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,402 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-25 20:28:28,403 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,403 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-25 20:28:28,403 - root - ERROR - 遍历目录时出错 C:\Windows\Temp: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,404 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-25 20:28:28,404 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\Desktop: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,404 - root - INFO - Scanning base directory for large files: C:\
+2025-05-25 20:28:28,404 - root - ERROR - 遍历目录时出错 C:\: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,404 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-25 20:28:28,404 - root - ERROR - 遍历目录时出错 C:\Windows\Logs: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,405 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-25 20:28:28,405 - root - ERROR - 遍历目录时出错 C:\Windows\SoftwareDistribution\Download: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:28:28,405 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-25 20:28:28,405 - root - ERROR - 遍历目录时出错 C:\Users\lisiy\AppData\Local\Steam\htmlcache: module 'ntpath' has no attribute 'isjunction'
+2025-05-25 20:32:53,763 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-25 20:32:53,818 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-25 20:32:53,822 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-25 20:32:53,822 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-25 20:32:53,829 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-25 20:32:53,874 - root - INFO - Scanning base directory for large files: C:\
+2025-05-25 20:35:25,569 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-25 20:35:25,823 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-25 20:35:25,824 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-25 20:35:25,860 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-25 20:35:25,861 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-25 20:35:25,862 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-25 20:35:25,864 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-25 20:35:25,868 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-25 20:35:25,897 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-25 20:53:56,813 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-25 20:53:56,821 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-25 20:53:56,823 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-25 20:53:57,086 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-25 20:53:57,765 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-25 20:53:57,833 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-25 20:53:57,863 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-25 20:53:57,864 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-25 20:53:57,923 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-25 20:53:57,924 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-25 20:53:57,928 - root - INFO - Scanning base directory for large files: C:\
+2025-05-25 20:56:13,137 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-25 20:56:13,142 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-25 20:56:13,178 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-25 20:56:13,179 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-25 21:06:11,682 - root - INFO - Scanning base directory for large files: C:\
+2025-05-25 21:08:25,923 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-25 21:08:25,959 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-25 21:08:25,963 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-25 21:08:26,208 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-25 21:08:26,209 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-25 21:08:26,215 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-25 21:08:26,247 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-25 21:08:26,250 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-25 21:08:26,721 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-25 21:08:26,722 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-25 21:08:26,789 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-25 21:08:26,843 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-25 21:08:26,844 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-25 21:08:26,845 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-25 21:40:03,327 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-25 21:40:03,331 - root - INFO - Scanning base directory for large files: C:\
+2025-05-25 21:42:25,161 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-25 21:42:25,194 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-25 21:42:25,195 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-25 21:42:25,201 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-25 21:42:25,202 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-25 21:42:25,274 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-25 21:42:25,275 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-25 21:42:25,275 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-25 21:42:25,284 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-25 21:42:25,761 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-25 21:42:25,992 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-25 21:42:25,995 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-25 21:42:26,062 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 14:05:44,278 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 14:09:07,194 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 14:09:07,202 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 14:09:07,203 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 14:09:07,204 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 14:09:07,206 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 14:09:07,236 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 14:09:07,236 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 14:09:07,819 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 14:09:08,205 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 14:09:08,211 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 14:09:08,274 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 14:09:08,379 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-26 14:09:08,383 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 14:09:08,388 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 14:13:26,131 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 14:13:26,218 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 14:13:26,219 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 14:13:26,268 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 14:13:26,318 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 14:13:26,319 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 14:13:26,325 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 14:13:26,335 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 14:13:26,418 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-26 14:13:26,423 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 14:13:26,430 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 14:13:26,432 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 14:13:26,794 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 14:13:27,351 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 14:13:27,352 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 14:17:39,900 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 14:17:39,900 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 14:17:39,903 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 14:17:39,931 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 14:17:39,932 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 14:17:39,972 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 14:17:40,186 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 14:17:40,193 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 14:17:40,193 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 14:17:40,194 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 14:17:40,233 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 14:17:40,281 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 14:17:40,284 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-26 14:17:40,286 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 14:17:40,660 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 20:07:39,013 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 20:10:44,272 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 20:10:44,279 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-26 20:10:44,282 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 20:10:44,343 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 20:10:44,344 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 20:10:44,344 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 20:10:44,348 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 20:10:44,609 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 20:10:44,643 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 20:10:44,644 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 20:10:45,085 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 20:10:45,089 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 20:10:45,090 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 20:10:45,121 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 21:03:36,256 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 21:03:36,257 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 21:03:36,791 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 21:03:36,796 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 21:03:36,796 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 21:03:36,798 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 21:03:36,802 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 21:03:36,867 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 21:03:36,867 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 21:03:36,894 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 21:03:36,922 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 21:03:36,943 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-26 21:03:36,945 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 21:03:36,996 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 21:06:20,722 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 21:07:45,973 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 21:07:45,978 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 21:07:45,989 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 21:07:45,990 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 21:10:12,389 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-26 21:10:12,391 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 21:10:12,451 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 21:10:12,456 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 21:10:12,514 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 21:10:12,551 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 21:10:13,070 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 21:10:13,307 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 21:10:13,340 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 21:10:13,342 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 21:10:13,343 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 21:11:22,254 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Temp
+2025-05-26 21:11:22,305 - root - INFO - Scanning base directory for large files: C:\Windows\WinSxS\Backup
+2025-05-26 21:11:22,493 - root - INFO - Scanning base directory for large files: C:\Windows\SoftwareDistribution\Download
+2025-05-26 21:11:22,497 - root - INFO - Scanning base directory for large files: C:\$Recycle.Bin
+2025-05-26 21:11:22,499 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Windows\Explorer
+2025-05-26 21:11:22,505 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Desktop
+2025-05-26 21:11:22,531 - root - INFO - Scanning base directory for large files: C:\Windows\Logs
+2025-05-26 21:11:22,554 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Steam\htmlcache
+2025-05-26 21:11:22,594 - root - INFO - Scanning base directory for large files: C:\Windows\Temp
+2025-05-26 21:11:22,595 - root - INFO - Scanning base directory for large files: C:\
+2025-05-26 21:13:40,439 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Google\Chrome\User Data\Default\Cache
+2025-05-26 21:13:40,440 - root - INFO - Scanning base directory for large files: C:\Windows\System32\DriverStore\FileRepository
+2025-05-26 21:13:41,074 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\Downloads
+2025-05-26 21:13:41,075 - root - INFO - Scanning base directory for large files: C:\Users\lisiy\AppData\Local\Microsoft\Edge\User Data\Default\Cache
+2025-05-26 21:13:41,086 - root - INFO - Scanning base directory for large files: C:\Windows\System32\LogFiles
+2025-05-28 03:54:33.463 | ERROR    | services.task_manager:__init__:54 - TaskManager failed to initialize its own LoggerService, falling back to global logger: __init__() got an unexpected keyword argument 'config_manager'
+2025-05-28 03:54:33.464 | WARNING  | services.task_manager:__init__:61 - TaskManager did not receive AIPlannerService, attempting to initialize it internally.
+2025-05-28 03:54:33.464 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 03:54:33.465 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 03:54:33.465 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 03:54:33.465 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 03:54:33.465 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 03:54:33.465 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 03:54:33.466 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 03:54:33.466 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 03:54:33.466 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 03:54:33.471 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 03:54:33.475 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 03:54:33.480 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 03:54:33.484 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 03:54:33.725 | INFO     | services.ai_planner:_detect_network_environment:671 - qwen API可通过直连访问
+2025-05-28 03:54:33.725 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 03:54:34.498 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 03:54:34.498 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=True
+2025-05-28 03:54:34.498 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 03:54:34.498 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 03:54:34.630 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 03:54:34.631 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 03:54:34.632 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 03:54:34.648 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 03:54:34.824 | INFO     | services.ai_planner:_detect_network_environment:671 - qwen API可通过直连访问
+2025-05-28 03:54:34.824 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 03:54:35.687 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 03:54:35.688 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=True
+2025-05-28 03:54:35.688 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 03:54:35.688 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 03:54:35.688 | INFO     | services.logger:info:99 - 应用程序组件初始化成功。
+2025-05-28 03:54:35.701 | INFO     | services.logger:info:99 - 自动发现分析路径: ['C:\\Users\\lisiy\\Downloads', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Windows\\Temp', 'C:\\$Recycle.Bin', 'C:\\Users\\lisiy\\Desktop']
+2025-05-28 03:54:35.701 | INFO     | services.logger:info:99 - 排除路径: []
+2025-05-28 03:54:35.721 | INFO     | services.logger:info:99 - 发现的垃圾目录: ['C:\\Users\\lisiy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Steam\\htmlcache', 'C:\\Windows\\Logs', 'C:\\Windows\\System32\\LogFiles', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Windows\\Explorer', 'C:\\Windows\\System32\\DriverStore\\FileRepository', 'C:\\Windows\\SoftwareDistribution\\Download', 'C:\\Windows\\WinSxS\\Backup', 'C:\\$Recycle.Bin', 'C:\\Windows\\Temp', 'C:\\Users\\lisiy\\Desktop', 'C:\\Users\\lisiy\\Downloads']
+2025-05-28 03:54:38.563 | INFO     | services.logger:info:99 - 发现的大文件（建议人工确认）: [] ... 共0个
+2025-05-28 03:54:38.578 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 03:54:40.180 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 03:54:40.180 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 03:54:40.542 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 03:54:40.542 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 03:54:40.888 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 03:54:40.888 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 03:54:41.239 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "18s"
+      }
+    ]
+  }
+}
+
+2025-05-28 03:54:41.239 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 03:54:41.591 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "18s"
+      }
+    ]
+  }
+}
+
+2025-05-28 03:54:41.591 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 03:54:41.935 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "17s"
+      }
+    ]
+  }
+}
+
+2025-05-28 03:54:41.935 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 03:54:44.350 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:489 - 从Gemini(v1/gemini-1.5-flash-001)成功接收并解析多轮计划
+2025-05-28 03:54:44.350 | INFO     | services.ai_planner:set_model:158 - 已切换到Qwen模型
+2025-05-28 03:54:44.350 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:323 - 向Qwen发送多轮对话 (尝试 1/3)...
+2025-05-28 03:54:54.835 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:345 - 从Qwen成功接收并解析多轮计划
+2025-05-28 08:16:15.573 | ERROR    | services.task_manager:__init__:54 - TaskManager failed to initialize its own LoggerService, falling back to global logger: __init__() got an unexpected keyword argument 'config_manager'
+2025-05-28 08:16:15.574 | WARNING  | services.task_manager:__init__:61 - TaskManager did not receive AIPlannerService, attempting to initialize it internally.
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 08:16:15.574 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 08:16:15.577 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 08:16:15.583 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 08:16:15.587 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 08:16:15.590 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 08:16:15.762 | INFO     | services.ai_planner:_detect_network_environment:671 - qwen API可通过直连访问
+2025-05-28 08:16:15.762 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 08:16:16.519 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 08:16:16.519 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=True
+2025-05-28 08:16:16.519 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:16:16.521 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 08:16:16.651 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 08:16:16.657 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 08:16:16.671 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 08:16:16.851 | INFO     | services.ai_planner:_detect_network_environment:671 - qwen API可通过直连访问
+2025-05-28 08:16:16.851 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 08:16:17.597 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 08:16:17.597 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=True
+2025-05-28 08:16:17.597 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:16:17.597 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:16:17.597 | INFO     | services.logger:info:99 - 应用程序组件初始化成功。
+2025-05-28 08:16:17.610 | INFO     | services.logger:info:99 - 自动发现分析路径: ['C:\\Users\\lisiy\\Downloads', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Windows\\Temp', 'C:\\$Recycle.Bin', 'C:\\Users\\lisiy\\Desktop']
+2025-05-28 08:16:17.611 | INFO     | services.logger:info:99 - 排除路径: []
+2025-05-28 08:16:17.619 | INFO     | services.logger:info:99 - 发现的垃圾目录: ['C:\\Users\\lisiy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Steam\\htmlcache', 'C:\\Windows\\Logs', 'C:\\Windows\\System32\\LogFiles', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Windows\\Explorer', 'C:\\Windows\\System32\\DriverStore\\FileRepository', 'C:\\Windows\\SoftwareDistribution\\Download', 'C:\\Windows\\WinSxS\\Backup', 'C:\\$Recycle.Bin', 'C:\\Windows\\Temp', 'C:\\Users\\lisiy\\Desktop', 'C:\\Users\\lisiy\\Downloads']
+2025-05-28 08:16:19.627 | INFO     | services.logger:info:99 - 发现的大文件（建议人工确认）: [] ... 共0个
+2025-05-28 08:16:19.627 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:16:21.275 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:16:21.275 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:16:21.573 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:16:21.573 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:16:21.872 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:16:21.872 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:16:22.171 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "37s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:16:22.171 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:16:22.476 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "37s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:16:22.476 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:16:22.781 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "37s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:16:22.781 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:16:24.368 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:489 - 从Gemini(v1/gemini-1.5-flash-001)成功接收并解析多轮计划
+2025-05-28 08:16:24.368 | INFO     | services.ai_planner:set_model:158 - 已切换到Qwen模型
+2025-05-28 08:16:24.368 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:323 - 向Qwen发送多轮对话 (尝试 1/3)...
+2025-05-28 08:16:39.089 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:345 - 从Qwen成功接收并解析多轮计划
+2025-05-28 08:17:10.291 | INFO     | services.logger:info:99 - 用户反馈: 你是谁
+2025-05-28 08:17:10.291 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:17:11.997 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:17:11.997 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:17:12.284 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:17:12.284 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:17:12.579 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:17:12.579 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:17:12.880 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "47s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:17:12.880 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:17:13.181 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "46s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:17:13.181 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:17:13.485 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "46s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:17:13.486 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:17:13.793 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 400，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-001:generateContent，返回: {
+  "error": {
+    "code": 400,
+    "message": "Please use a valid role: user, model.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+
+2025-05-28 08:17:13.793 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-flash-001-tuning ...
+2025-05-28 08:17:14.085 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 400，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-001-tuning:generateContent，返回: {
+  "error": {
+    "code": 400,
+    "message": "Please use a valid role: user, model.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+
+2025-05-28 08:17:14.085 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-flash ...
+2025-05-28 08:17:14.647 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:17:16.355 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:17:16.355 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:17:16.662 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:17:16.663 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:17:16.956 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:17:16.956 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:17:17.255 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "42s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:17:17.256 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:17:17.556 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "42s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:17:17.556 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:17:17.855 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "42s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:17:17.856 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:17:20.206 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:489 - 从Gemini(v1/gemini-1.5-flash-001)成功接收并解析多轮计划
+2025-05-28 08:17:20.206 | INFO     | services.ai_planner:set_model:158 - 已切换到Qwen模型
+2025-05-28 08:17:20.206 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:323 - 向Qwen发送多轮对话 (尝试 1/3)...
+2025-05-28 08:17:28.743 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:345 - 从Qwen成功接收并解析多轮计划
+2025-05-28 08:17:44.655 | INFO     | services.logger:info:99 - 用户选择退出对话。
+2025-05-28 08:17:44.655 | INFO     | services.logger:info:99 - 正在关闭应用程序...
+2025-05-28 08:17:44.655 | INFO     | services.scheduler:stop:79 - 调度器服务已停止
+2025-05-28 08:17:44.655 | INFO     | services.task_manager:close:804 - 开始关闭任务管理器...
+2025-05-28 08:17:44.655 | INFO     | services.task_manager:close:830 - 关闭数据库连接...
+2025-05-28 08:17:44.655 | INFO     | services.task_manager:close:838 - 任务管理器已关闭
+2025-05-28 08:17:44.655 | INFO     | services.scheduler:close:379 - 调度器服务已关闭
+2025-05-28 08:17:44.655 | INFO     | services.logger:info:99 - 调度器已关闭。
+2025-05-28 08:17:44.655 | INFO     | services.task_manager:close:804 - 开始关闭任务管理器...
+2025-05-28 08:17:44.661 | INFO     | services.task_manager:close:838 - 任务管理器已关闭
+2025-05-28 08:17:44.661 | INFO     | services.logger:info:99 - 任务管理器已关闭。
+2025-05-28 08:17:44.666 | INFO     | services.logger:info:99 - 应用程序已关闭。
+2025-05-28 08:18:45.468 | ERROR    | services.task_manager:__init__:54 - TaskManager failed to initialize its own LoggerService, falling back to global logger: __init__() got an unexpected keyword argument 'config_manager'
+2025-05-28 08:18:45.468 | WARNING  | services.task_manager:__init__:61 - TaskManager did not receive AIPlannerService, attempting to initialize it internally.
+2025-05-28 08:18:45.469 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 08:18:45.469 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 08:18:45.469 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 08:18:45.469 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 08:18:45.470 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 08:18:45.470 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 08:18:45.470 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 08:18:45.471 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 08:18:45.471 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 08:18:45.474 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 08:18:45.475 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 08:18:45.476 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 08:18:45.481 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 08:18:45.683 | INFO     | services.ai_planner:_detect_network_environment:671 - qwen API可通过直连访问
+2025-05-28 08:18:45.683 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 08:18:46.487 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 08:18:46.487 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=True
+2025-05-28 08:18:46.487 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:18:46.487 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:18:46.611 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 08:18:46.611 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 08:18:46.612 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 08:18:46.614 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 08:18:46.615 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 08:18:46.615 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 08:18:46.615 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 08:18:46.788 | INFO     | services.ai_planner:_detect_network_environment:671 - qwen API可通过直连访问
+2025-05-28 08:18:46.789 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 08:18:47.643 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 08:18:47.643 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=True
+2025-05-28 08:18:47.643 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:18:47.645 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:18:47.645 | INFO     | services.logger:info:99 - 应用程序组件初始化成功。
+2025-05-28 08:18:47.650 | INFO     | services.logger:info:99 - 自动发现分析路径: ['C:\\Users\\lisiy\\Downloads', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Windows\\Temp', 'C:\\$Recycle.Bin', 'C:\\Users\\lisiy\\Desktop']
+2025-05-28 08:18:47.650 | INFO     | services.logger:info:99 - 排除路径: []
+2025-05-28 08:18:47.658 | INFO     | services.logger:info:99 - 发现的垃圾目录: ['C:\\Users\\lisiy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Steam\\htmlcache', 'C:\\Windows\\Logs', 'C:\\Windows\\System32\\LogFiles', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Windows\\Explorer', 'C:\\Windows\\System32\\DriverStore\\FileRepository', 'C:\\Windows\\SoftwareDistribution\\Download', 'C:\\Windows\\WinSxS\\Backup', 'C:\\$Recycle.Bin', 'C:\\Windows\\Temp', 'C:\\Users\\lisiy\\Desktop', 'C:\\Users\\lisiy\\Downloads']
+2025-05-28 08:18:49.205 | INFO     | services.logger:info:99 - 发现的大文件（建议人工确认）: [] ... 共0个
+2025-05-28 08:18:49.218 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:18:50.885 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:18:50.885 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:18:51.204 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:18:51.206 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:18:51.533 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:18:51.533 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:18:51.844 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "8s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:18:51.844 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:18:52.165 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "7s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:18:52.166 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:18:52.489 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "7s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:18:52.489 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:18:54.978 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:489 - 从Gemini(v1/gemini-1.5-flash-001)成功接收并解析多轮计划
+2025-05-28 08:18:54.978 | INFO     | services.ai_planner:set_model:158 - 已切换到Qwen模型
+2025-05-28 08:18:54.978 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:323 - 向Qwen发送多轮对话 (尝试 1/3)...
+2025-05-28 08:19:04.310 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:345 - 从Qwen成功接收并解析多轮计划
+2025-05-28 08:19:15.638 | INFO     | services.logger:info:99 - 用户选择退出对话。
+2025-05-28 08:19:15.639 | INFO     | services.logger:info:99 - 正在关闭应用程序...
+2025-05-28 08:19:15.639 | INFO     | services.scheduler:stop:79 - 调度器服务已停止
+2025-05-28 08:19:15.639 | INFO     | services.task_manager:close:804 - 开始关闭任务管理器...
+2025-05-28 08:19:15.640 | INFO     | services.task_manager:close:830 - 关闭数据库连接...
+2025-05-28 08:19:15.642 | INFO     | services.task_manager:close:838 - 任务管理器已关闭
+2025-05-28 08:19:15.642 | INFO     | services.scheduler:close:379 - 调度器服务已关闭
+2025-05-28 08:19:15.642 | INFO     | services.logger:info:99 - 调度器已关闭。
+2025-05-28 08:19:15.642 | INFO     | services.task_manager:close:804 - 开始关闭任务管理器...
+2025-05-28 08:19:15.642 | INFO     | services.task_manager:close:838 - 任务管理器已关闭
+2025-05-28 08:19:15.642 | INFO     | services.logger:info:99 - 任务管理器已关闭。
+2025-05-28 08:19:15.645 | INFO     | services.logger:info:99 - 应用程序已关闭。
+2025-05-28 08:19:18.369 | ERROR    | services.task_manager:__init__:54 - TaskManager failed to initialize its own LoggerService, falling back to global logger: __init__() got an unexpected keyword argument 'config_manager'
+2025-05-28 08:19:18.377 | WARNING  | services.task_manager:__init__:61 - TaskManager did not receive AIPlannerService, attempting to initialize it internally.
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 08:19:18.377 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 08:19:18.380 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 08:19:18.381 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 08:19:18.384 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 08:19:18.387 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 08:19:18.394 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 08:19:18.402 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 08:19:23.460 | WARNING  | services.ai_planner:_test_api_connectivity:730 - 测试qwen API连接失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1107: The handshake operation timed out')))
+2025-05-28 08:19:28.552 | WARNING  | services.ai_planner:_test_api_connectivity:730 - 测试qwen API连接失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1107: The handshake operation timed out')))
+2025-05-28 08:19:28.553 | WARNING  | services.ai_planner:_detect_network_environment:680 - qwen API无法访问
+2025-05-28 08:19:28.553 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 08:19:29.336 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 08:19:29.338 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=False
+2025-05-28 08:19:29.338 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:19:29.338 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:19:29.469 | INFO     | services.ai_planner:_load_api_keys:76 - 开始加载AI模型API密钥...
+2025-05-28 08:19:29.470 | INFO     | services.ai_planner:_load_api_keys:80 - 环境变量 GEMINI_API_KEY: 未设置
+2025-05-28 08:19:29.470 | INFO     | services.ai_planner:_load_api_keys:81 - 环境变量 QWEN_API_KEY: 未设置
+2025-05-28 08:19:29.471 | INFO     | services.ai_planner:_load_api_keys:94 - 配置文件加载状态: 成功
+2025-05-28 08:19:29.471 | INFO     | services.ai_planner:_load_api_keys:106 - AI配置字段: ['gemini_api_key', 'qwen_api_key']
+2025-05-28 08:19:29.471 | INFO     | services.ai_planner:_load_api_keys:111 - 配置文件中 gemini_api_key: 已设置
+2025-05-28 08:19:29.472 | INFO     | services.ai_planner:_load_api_keys:112 - 配置文件中 qwen_api_key: 已设置
+2025-05-28 08:19:29.472 | INFO     | services.ai_planner:_load_api_keys:115 - 从配置文件加载了Gemini API密钥
+2025-05-28 08:19:29.472 | INFO     | services.ai_planner:_load_api_keys:118 - 从配置文件加载了Qwen API密钥
+2025-05-28 08:19:29.472 | INFO     | services.ai_planner:_load_api_keys:131 - 成功加载的API模型: ['gemini', 'qwen']
+2025-05-28 08:19:29.474 | INFO     | services.ai_planner:_detect_network_environment:647 - 开始检测网络环境...
+2025-05-28 08:19:29.485 | INFO     | services.ai_planner:_detect_network_environment:661 - 检测到系统代理配置: {'http': 'http://127.0.0.1:26309', 'https': 'https://127.0.0.1:26309', 'ftp': 'ftp://127.0.0.1:26309'}
+2025-05-28 08:19:29.498 | INFO     | services.ai_planner:_detect_network_environment:666 - 测试qwen API连接性...
+2025-05-28 08:19:34.558 | WARNING  | services.ai_planner:_test_api_connectivity:730 - 测试qwen API连接失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1107: The handshake operation timed out')))
+2025-05-28 08:19:39.621 | WARNING  | services.ai_planner:_test_api_connectivity:730 - 测试qwen API连接失败: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1107: The handshake operation timed out')))
+2025-05-28 08:19:39.621 | WARNING  | services.ai_planner:_detect_network_environment:680 - qwen API无法访问
+2025-05-28 08:19:39.621 | INFO     | services.ai_planner:_detect_network_environment:683 - 测试gemini API连接性...
+2025-05-28 08:19:40.412 | INFO     | services.ai_planner:_detect_network_environment:688 - gemini API可通过代理访问
+2025-05-28 08:19:40.412 | INFO     | services.ai_planner:_detect_network_environment:699 - 网络环境检测完成: VPN=True, Gemini可用=True, Qwen可用=False
+2025-05-28 08:19:40.412 | INFO     | services.ai_planner:__init__:62 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:19:40.412 | INFO     | services.ai_planner:__init__:69 - AI Planner Service 成功初始化，使用gemini的gemini-pro模型。
+2025-05-28 08:19:40.412 | INFO     | services.logger:info:99 - 应用程序组件初始化成功。
+2025-05-28 08:19:40.427 | INFO     | services.logger:info:99 - 自动发现分析路径: ['C:\\Users\\lisiy\\Downloads', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Windows\\Temp', 'C:\\$Recycle.Bin', 'C:\\Users\\lisiy\\Desktop']
+2025-05-28 08:19:40.427 | INFO     | services.logger:info:99 - 排除路径: []
+2025-05-28 08:19:40.435 | INFO     | services.logger:info:99 - 发现的垃圾目录: ['C:\\Users\\lisiy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache', 'C:\\Users\\lisiy\\AppData\\Local\\Steam\\htmlcache', 'C:\\Windows\\Logs', 'C:\\Windows\\System32\\LogFiles', 'C:\\Users\\lisiy\\AppData\\Local\\Temp', 'C:\\Users\\lisiy\\AppData\\Local\\Microsoft\\Windows\\Explorer', 'C:\\Windows\\System32\\DriverStore\\FileRepository', 'C:\\Windows\\SoftwareDistribution\\Download', 'C:\\Windows\\WinSxS\\Backup', 'C:\\$Recycle.Bin', 'C:\\Windows\\Temp', 'C:\\Users\\lisiy\\Desktop', 'C:\\Users\\lisiy\\Downloads']
+2025-05-28 08:19:42.038 | INFO     | services.logger:info:99 - 发现的大文件（建议人工确认）: [] ... 共0个
+2025-05-28 08:19:42.053 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:19:43.564 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:19:43.565 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:19:43.873 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:19:43.873 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:19:44.183 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:19:44.185 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:19:44.498 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "15s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:19:44.498 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:19:44.808 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "15s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:19:44.809 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:19:45.108 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "14s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:19:45.108 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:19:47.565 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:489 - 从Gemini(v1/gemini-1.5-flash-001)成功接收并解析多轮计划
+2025-05-28 08:19:47.565 | INFO     | services.ai_planner:set_model:158 - 已切换到Qwen模型
+2025-05-28 08:19:47.565 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:323 - 向Qwen发送多轮对话 (尝试 1/3)...
+2025-05-28 08:19:52.619 | WARNING  | services.ai_planner:generate_plan:273 - 模型 qwen 生成分流失败，尝试下一个模型。错误: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/aigc/text-generation/generation (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1107: The handshake operation timed out')))
+2025-05-28 08:20:23.401 | INFO     | services.logger:info:99 - 用户反馈: 你是谁
+2025-05-28 08:20:23.402 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:20:24.937 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:20:24.937 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:20:25.232 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:20:25.232 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:20:25.526 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:20:25.526 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:20:25.825 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "34s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:20:25.825 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:20:26.131 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "33s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:20:26.131 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:20:26.431 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "33s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:20:26.432 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:20:26.744 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 400，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-001:generateContent，返回: {
+  "error": {
+    "code": 400,
+    "message": "Please use a valid role: user, model.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+
+2025-05-28 08:20:26.744 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-flash-001-tuning ...
+2025-05-28 08:20:27.043 | ERROR    | services.ai_planner:_call_gemini_for_chat:432 - Gemini API调用失败，状态码: 400，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-001-tuning:generateContent，返回: {
+  "error": {
+    "code": 400,
+    "message": "Please use a valid role: user, model.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+
+2025-05-28 08:20:27.043 | INFO     | services.ai_planner:_call_gemini_for_chat:419 - 尝试Gemini v1/gemini-1.5-flash ...
+2025-05-28 08:20:27.815 | INFO     | services.ai_planner:set_model:158 - 已切换到Gemini模型
+2025-05-28 08:20:29.391 | INFO     | services.ai_planner:_detect_gemini_models:383 - 自动探测到可用Gemini模型: [('v1', 'gemini-1.0-pro-vision-latest'), ('v1', 'gemini-pro-vision'), ('v1', 'gemini-1.5-pro-001'), ('v1', 'gemini-1.5-pro-002'), ('v1', 'gemini-1.5-pro'), ('v1', 'gemini-1.5-flash-001'), ('v1', 'gemini-1.5-flash-001-tuning'), ('v1', 'gemini-1.5-flash'), ('v1', 'gemini-1.5-flash-002'), ('v1', 'gemini-1.5-flash-8b'), ('v1', 'gemini-1.5-flash-8b-001'), ('v1', 'gemini-2.0-flash'), ('v1', 'gemini-2.0-flash-001'), ('v1', 'gemini-2.0-flash-lite-001'), ('v1', 'gemini-2.0-flash-lite'), ('v1', 'gemini-2.0-flash-preview-image-generation'), ('v1', 'embedding-001'), ('v1', 'text-embedding-004'), ('v1beta', 'embedding-gecko-001'), ('v1beta', 'gemini-1.0-pro-vision-latest'), ('v1beta', 'gemini-pro-vision'), ('v1beta', 'gemini-1.5-pro-latest'), ('v1beta', 'gemini-1.5-pro-001'), ('v1beta', 'gemini-1.5-pro-002'), ('v1beta', 'gemini-1.5-pro'), ('v1beta', 'gemini-1.5-flash-latest'), ('v1beta', 'gemini-1.5-flash-001'), ('v1beta', 'gemini-1.5-flash-001-tuning'), ('v1beta', 'gemini-1.5-flash'), ('v1beta', 'gemini-1.5-flash-002'), ('v1beta', 'gemini-1.5-flash-8b'), ('v1beta', 'gemini-1.5-flash-8b-001'), ('v1beta', 'gemini-1.5-flash-8b-latest'), ('v1beta', 'gemini-1.5-flash-8b-exp-0827'), ('v1beta', 'gemini-1.5-flash-8b-exp-0924'), ('v1beta', 'gemini-2.5-pro-exp-03-25'), ('v1beta', 'gemini-2.5-pro-preview-03-25'), ('v1beta', 'gemini-2.5-flash-preview-04-17'), ('v1beta', 'gemini-2.5-flash-preview-05-20'), ('v1beta', 'gemini-2.5-flash-preview-04-17-thinking'), ('v1beta', 'gemini-2.5-pro-preview-05-06'), ('v1beta', 'gemini-2.0-flash-exp'), ('v1beta', 'gemini-2.0-flash'), ('v1beta', 'gemini-2.0-flash-001'), ('v1beta', 'gemini-2.0-flash-exp-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-001'), ('v1beta', 'gemini-2.0-flash-lite'), ('v1beta', 'gemini-2.0-flash-preview-image-generation'), ('v1beta', 'gemini-2.0-flash-lite-preview-02-05'), ('v1beta', 'gemini-2.0-flash-lite-preview'), ('v1beta', 'gemini-2.0-pro-exp'), ('v1beta', 'gemini-2.0-pro-exp-02-05'), ('v1beta', 'gemini-exp-1206'), ('v1beta', 'gemini-2.0-flash-thinking-exp-01-21'), ('v1beta', 'gemini-2.0-flash-thinking-exp'), ('v1beta', 'gemini-2.0-flash-thinking-exp-1219'), ('v1beta', 'gemini-2.5-flash-preview-tts'), ('v1beta', 'gemini-2.5-pro-preview-tts'), ('v1beta', 'learnlm-2.0-flash-experimental'), ('v1beta', 'gemma-3-1b-it'), ('v1beta', 'gemma-3-4b-it'), ('v1beta', 'gemma-3-12b-it'), ('v1beta', 'gemma-3-27b-it'), ('v1beta', 'gemma-3n-e4b-it'), ('v1beta', 'embedding-001'), ('v1beta', 'text-embedding-004'), ('v1beta', 'gemini-embedding-exp-03-07'), ('v1beta', 'gemini-embedding-exp')]
+2025-05-28 08:20:29.392 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.0-pro-vision-latest ...
+2025-05-28 08:20:29.709 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.0-pro-vision-latest:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:20:29.709 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-pro-vision ...
+2025-05-28 08:20:30.022 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 404，URL: https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent，返回: {
+  "error": {
+    "code": 404,
+    "message": "Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2025-05-28 08:20:30.022 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-001 ...
+2025-05-28 08:20:30.389 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "29s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:20:30.389 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro-002 ...
+2025-05-28 08:20:30.722 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-002:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "29s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:20:30.722 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-pro ...
+2025-05-28 08:20:31.029 | ERROR    | services.ai_planner:_generate_plan_with_gemini_multi:498 - Gemini API调用失败，状态码: 429，URL: https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent，返回: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          },
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",
+            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "28s"
+      }
+    ]
+  }
+}
+
+2025-05-28 08:20:31.030 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:475 - 尝试Gemini v1/gemini-1.5-flash-001 ...
+2025-05-28 08:20:36.177 | INFO     | services.ai_planner:_generate_plan_with_gemini_multi:489 - 从Gemini(v1/gemini-1.5-flash-001)成功接收并解析多轮计划
+2025-05-28 08:20:36.177 | INFO     | services.ai_planner:set_model:158 - 已切换到Qwen模型
+2025-05-28 08:20:36.178 | INFO     | services.ai_planner:_generate_plan_with_qwen_multi:323 - 向Qwen发送多轮对话 (尝试 1/3)...
+2025-05-28 08:20:41.220 | WARNING  | services.ai_planner:generate_plan:273 - 模型 qwen 生成分流失败，尝试下一个模型。错误: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /api/v1/services/aigc/text-generation/generation (Caused by ProxyError('Cannot connect to proxy.', timeout('_ssl.c:1107: The handshake operation timed out')))
+2025-05-28 08:22:19.854 | INFO     | services.logger:info:99 - 用户选择退出对话。
+2025-05-28 08:22:19.855 | INFO     | services.logger:info:99 - 正在关闭应用程序...
+2025-05-28 08:22:19.855 | INFO     | services.scheduler:stop:79 - 调度器服务已停止
+2025-05-28 08:22:19.855 | INFO     | services.task_manager:close:804 - 开始关闭任务管理器...
+2025-05-28 08:22:19.856 | INFO     | services.task_manager:close:830 - 关闭数据库连接...
+2025-05-28 08:22:19.856 | INFO     | services.task_manager:close:838 - 任务管理器已关闭
+2025-05-28 08:22:19.856 | INFO     | services.scheduler:close:379 - 调度器服务已关闭
+2025-05-28 08:22:19.856 | INFO     | services.logger:info:99 - 调度器已关闭。
+2025-05-28 08:22:19.856 | INFO     | services.task_manager:close:804 - 开始关闭任务管理器...
+2025-05-28 08:22:19.856 | INFO     | services.task_manager:close:838 - 任务管理器已关闭
+2025-05-28 08:22:19.856 | INFO     | services.logger:info:99 - 任务管理器已关闭。
+2025-05-28 08:22:19.856 | INFO     | services.logger:info:99 - 应用程序已关闭。

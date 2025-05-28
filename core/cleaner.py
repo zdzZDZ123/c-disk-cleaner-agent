@@ -120,6 +120,10 @@ class Cleaner:
         self._clean_thread.start()
         
         logger.info(f"开始新清理任务 {task_id}, 共 {len(filtered_files)} 个文件, 总大小: {total_size / (1024*1024):.2f} MB")
+        # 清理完成后统计空间
+        cleaned_size = sum(f.size for f in files_to_clean)
+        logger.info(f"本次清理释放空间：{cleaned_size / (1024*1024):.2f} MB")
+        print(f"本次清理释放空间：{cleaned_size / (1024*1024):.2f} MB")
         return task_id
     
     def stop_clean_task(self) -> bool:
@@ -344,39 +348,51 @@ class Cleaner:
             self._is_cleaning = False
     
     def _safe_delete(self, path: str) -> bool:
-        """安全删除文件或目录
-        
+        """安全删除文件或目录，先移动到回收站目录
         Args:
             path: 文件或目录路径
-            
         Returns:
-            是否成功删除
+            是否成功移动到回收站
         """
         try:
             path_obj = Path(path)
-            
             # 如果路径不存在，视为成功
             if not path_obj.exists():
                 return True
-            
-            # 对于目录，使用rmtree
-            if path_obj.is_dir():
-                shutil.rmtree(path, ignore_errors=False)
-            # 对于文件，直接删除
+            # 回收站目录
+            recycle_bin = Path.home() / ".c_disk_cleaner" / "recycle_bin"
+            recycle_bin.mkdir(exist_ok=True, parents=True)
+            # 生成唯一目标路径，保留原始相对路径
+            rel_path = path_obj.relative_to(path_obj.anchor)
+            target_path = recycle_bin / rel_path
+            target_path.parent.mkdir(exist_ok=True, parents=True)
+            # 如果目标已存在，重命名加时间戳
+            if target_path.exists():
+                import time
+                target_path = target_path.with_name(f"{target_path.name}_{int(time.time())}")
+            # 移动文件或目录
+            shutil.move(str(path_obj), str(target_path))
+            logger.info(f"已移动到回收站: {path} -> {target_path}")
+            # 记录回收信息（可扩展为json日志）
+            recycle_log = recycle_bin / "recycle_log.json"
+            import json
+            log_entry = {"original_path": str(path_obj), "recycle_path": str(target_path), "time": datetime.now().isoformat()}
+            if recycle_log.exists():
+                with open(recycle_log, "r", encoding="utf-8") as f:
+                    log_data = json.load(f)
             else:
-                path_obj.unlink()
-                
-            logger.debug(f"成功删除: {path}")
+                log_data = []
+            log_data.append(log_entry)
+            with open(recycle_log, "w", encoding="utf-8") as f:
+                json.dump(log_data, f, ensure_ascii=False, indent=2)
             return True
-            
         except PermissionError:
-            logger.warning(f"权限不足，无法删除: {path}")
+            logger.warning(f"权限不足，无法移动到回收站: {path}")
             return False
         except FileNotFoundError:
-            # 文件可能已经被删除，视为成功
             return True
         except Exception as e:
-            logger.error(f"删除失败 {path}: {e}")
+            logger.error(f"移动到回收站失败 {path}: {e}")
             return False
     
     def _create_backup(self, files: List[FileItem]) -> Optional[str]:

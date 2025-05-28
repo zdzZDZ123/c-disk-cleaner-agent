@@ -4,15 +4,19 @@
 """
 C盘清理工具 - 主应用程序入口
 Based on README.md specifications.
+支持多种AI模型（Gemini、Qwen）生成清理计划
 """
 
 import argparse
 import sys
 import time
 import signal
-import atexit # Added for cleanup
 import os  # Needed for potential size calculation in list-duplicates
-from datetime import datetime # Added for AI Plan
+from pathlib import Path
+import psutil
+import yaml
+import json
+from datetime import datetime
 
 # Assume these modules exist based on README.md project structure
 # We'll wrap the imports in try-except to allow basic execution even if modules are missing
@@ -21,7 +25,7 @@ try:
     from services.logger import LoggerService
     from services.task_manager import TaskManager
     from services.scheduler import SchedulerService
-    from services.ai_planner import AIPlannerService # Added for ai-plan
+    from services.ai_planner import AIPlannerService
     # Database might be implicitly used by TaskManager, so direct import might not be needed here
     # from data.database import Database 
     MODULE_ERROR = None
@@ -36,30 +40,10 @@ except ImportError as e:
             # Basic logger if service fails
             logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
             return logging.getLogger(__name__)
-    class TaskManager:
-        def __init__(self, config, db=None): pass
-        def start_scan(self, scan_paths, exclude_paths): return None
-        def start_clean_task(self, scan_id, categories, create_backup): return None
-        def restore_from_backup(self, backup_id): return False
-        def list_backups(self): return []
-        def get_scan_result(self, scan_id): return None
-        def stop_scan(self): pass
-        def stop_clean_task(self): pass
-        def get_scan_progress(self): return {'progress': 0, 'total_items': 0, 'total_size': 0}
-        def get_clean_progress(self): return {'progress': 0, 'cleaned_size': 0, 'total_size': 0}
-        def get_clean_task(self, task_id): return None # Should return an object with cleaned_size, backup_id etc.
-        class Scanner: _is_scanning = False # Dummy attribute
-        class Cleaner: _is_cleaning = False # Dummy attribute
-        scanner = Scanner()
-        cleaner = Cleaner()
-        
-    class SchedulerService:
-        def __init__(self, config, task_manager): pass
-        def start(self): pass
-        def close(self): pass
+    # 使用实际的类导入，而不是虚拟类定义
         def update_system_info(self): pass # Added based on previous code
-
-    class AIPlannerService: # Added for ai-plan
+        
+    class AIPlannerService:
         def __init__(self, config_manager=None, model=None): pass
         def generate_plan(self, user_goal, current_context=None): return None
         def get_available_models(self): return []
@@ -72,66 +56,37 @@ app_context = {
     "logger": None,
     "task_manager": None,
     "scheduler": None,
-    "ai_planner": None, # Added for ai-plan
-    "initialized": False # ADDED: Flag to track initialization
+    "ai_planner": None
 }
 
 def initialize_app():
     """Initializes application components based on config."""
-    if app_context.get("initialized"):
-        # If logger is available and we want to log this, uncomment below
-        # logger = app_context.get("logger")
-        # if logger:
-        #     logger.debug("Application already initialized. Skipping re-initialization.")
-        return True # Already initialized successfully
     if MODULE_ERROR:
-        # Critical import error, use basic print for all messages
-        print(f"CRITICAL ERROR: Failed to import necessary modules: {MODULE_ERROR}", file=sys.stderr)
-        print("Please ensure all dependencies are installed and the project structure is correct.", file=sys.stderr)
-        print("Application cannot continue initialization due to missing core modules.", file=sys.stderr)
-        # Attempt to create a very basic logger for this specific error if possible, otherwise, it's already printed.
-        try:
-            app_context["logger"] = LoggerService(None).get_logger()
-            if app_context["logger"]:
-                 app_context["logger"].critical(f"Failed to import necessary modules: {MODULE_ERROR}")
-        except:
-            pass # Ignore if even basic logger fails
-        return False # Indicate critical failure
+        print(f"错误：无法导入必要的模块: {MODULE_ERROR}", file=sys.stderr)
+        print("请确保所有依赖已安装并且项目结构正确。", file=sys.stderr)
+        # Still try to initialize logger for basic messages
+        app_context["logger"] = LoggerService(None).get_logger()
+        return False
 
     try:
         app_context["config"] = ConfigManager()
-        # Initialize logger FIRST, so other initializations can use it.
-        logger_service = LoggerService(app_context["config"])
-        app_context["logger"] = logger_service.get_logger()
-        # Now use the initialized logger for subsequent messages
-        logger = app_context["logger"]
-
-        logger.info("配置和日志服务初始化成功。正在初始化其他组件...")
-
-        # Initialize AIPlannerService first so it can be passed to TaskManager
-        app_context["ai_planner"] = AIPlannerService(config_manager=app_context["config"], logger=app_context["logger"])
-        app_context["task_manager"] = TaskManager(app_context["config"], ai_planner_service=app_context["ai_planner"])
+        # LoggerService needs log file path, not config
+        logger_service = LoggerService("logs/app.log") 
+        app_context["logger"] = logger_service 
+        
+        # Assuming TaskManager needs config (and potentially a DB instance implicitly)
+        app_context["task_manager"] = TaskManager(app_context["config"]) 
+        
+        # Assuming SchedulerService needs config and task_manager
         app_context["scheduler"] = SchedulerService(app_context["config"], app_context["task_manager"])
-
-        logger.info("所有应用程序组件初始化成功。")
-        app_context["initialized"] = True # ADDED: Set flag after successful initialization
+        
+        # Initialize AI Planner Service
+        app_context["ai_planner"] = AIPlannerService(app_context["config"])
+        
+        app_context["logger"].info("应用程序组件初始化成功。")
         return True
     except Exception as e:
-        # Determine if logger was initialized before the exception
-        current_logger = app_context.get("logger")
-        error_message = f"应用程序初始化过程中发生错误: {e}"
-        app_context["initialized"] = False # Ensure flag is false on error
-        
-        if current_logger:
-            current_logger.critical(error_message, exc_info=True) # Log with stack trace
-        else:
-            # Logger itself failed or error occurred before logger init
-            print(f"CRITICAL INIT ERROR (logger unavailable): {error_message}", file=sys.stderr)
-            # Optionally print stack trace manually if needed for debugging early init failures
-            import traceback
-            traceback.print_exc(file=sys.stderr)
-            
-        print("应用程序初始化失败，请查看上述错误或日志。", file=sys.stderr) # General message to stderr
+        print(f"应用程序初始化失败: {e}", file=sys.stderr)
         return False
 
 def cleanup_app():
@@ -166,39 +121,453 @@ def signal_handler(sig, frame):
     logger = app_context.get("logger", None)
     log_info = print if logger is None else logger.info
     log_info(f"收到信号 {sig}，准备关闭...")
-    # cleanup_app() will be called by atexit on sys.exit()
+    cleanup_app()
     sys.exit(0)
 
-# --- Helper function to check app components ---
-def check_app_component(component_name, logger_ref, is_logger_check=False):
-    """Checks if a component in app_context is initialized and prints/logs error if not."""
-    component = app_context.get(component_name)
-    if not component:
-        error_msg = f"错误：应用程序组件 '{component_name}' 未初始化。无法继续执行命令。"
-        if is_logger_check:
-            # If checking for logger itself and it's missing, can only print
-            print(error_msg, file=sys.stderr)
-        elif logger_ref:
-            logger_ref.error(error_msg)
-            print(error_msg, file=sys.stderr)
-        else:
-            # Fallback if logger_ref is also None (e.g. logger itself failed)
-            print(f"(Logger not available) {error_msg}", file=sys.stderr)
-        return None
-    return component
+def discover_cleanup_dirs():
+    """自动发现本机常见可清理目录"""
+    candidates = [
+        Path.home() / 'Downloads',
+        Path.home() / 'AppData' / 'Local' / 'Temp',
+        Path('C:/Windows/Temp'),
+        Path('C:/$Recycle.Bin'),
+        Path.home() / 'Desktop',
+    ]
+    existing = [str(p) for p in candidates if p.exists()]
+    return existing
 
-# --- Command Implementations ---
+def discover_junk_dirs():
+    from pathlib import Path
+    user = Path.home()
+    dirs = [
+        # 浏览器缓存
+        user / 'AppData/Local/Google/Chrome/User Data/Default/Cache',
+        user / 'AppData/Local/Microsoft/Edge/User Data/Default/Cache',
+        user / 'AppData/Local/Mozilla/Firefox/Profiles',
+        # IM 软件缓存
+        user / 'AppData/Local/Tencent/QQ/Temp',
+        user / 'AppData/Local/Tencent/WeChat/WeChat Files',
+        user / 'AppData/Local/DingTalk',
+        user / 'AppData/Local/Feishu',
+        user / 'AppData/Local/WeCom',
+        # 下载器缓存
+        user / 'AppData/Roaming/Thunder/Temp',
+        user / 'AppData/Local/IDM/Temp',
+        # 播放器缓存
+        user / 'AppData/Roaming/PotPlayerMini64/Cache',
+        user / 'AppData/Roaming/QQPlayer/Cache',
+        # 游戏启动器
+        user / 'AppData/Local/Steam/htmlcache',
+        user / 'AppData/Local/WeGame/Cache',
+        # Office/Adobe/AutoCAD 临时文件
+        user / 'AppData/Local/Microsoft/Office/UnsavedFiles',
+        user / 'AppData/Local/Adobe',
+        user / 'AppData/Local/Autodesk',
+        # 日志
+        Path('C:/Windows/Logs'),
+        Path('C:/Windows/System32/LogFiles'),
+        user / 'AppData/Local/Temp',
+        # 缩略图缓存
+        user / 'AppData/Local/Microsoft/Windows/Explorer',
+        # 系统转储
+        Path('C:/Windows/Minidump'),
+        Path('C:/Windows/MEMORY.DMP'),
+        # 驱动残留
+        Path('C:/Windows/System32/DriverStore/FileRepository'),
+        # Windows 更新残留
+        Path('C:/Windows/SoftwareDistribution/Download'),
+        Path('C:/Windows/WinSxS/Backup'),
+        # 回收站
+        Path('C:/$Recycle.Bin'),
+        # 其他
+        Path('C:/Windows/Temp'),
+        user / 'Desktop',
+        user / 'Downloads',
+    ]
+    # 展开 Firefox profiles 缓存
+    firefox_profiles = list((user / 'AppData/Local/Mozilla/Firefox/Profiles').glob('*'))
+    cache_dirs = [p / 'cache2' for p in firefox_profiles if (p / 'cache2').exists()]
+    all_dirs = [str(d) for d in dirs if d.exists()] + [str(d) for d in cache_dirs]
+    return all_dirs
+
+def find_large_files(base_dirs, min_size_mb=500):
+    from pathlib import Path
+    import time
+    large_files = []
+    for base in base_dirs:
+        base = Path(base)
+        if base.exists():
+            for f in base.rglob('*'):
+                try:
+                    if f.is_file() and f.stat().st_size > min_size_mb * 1024 * 1024:
+                        large_files.append({
+                            'path': str(f),
+                            'size_mb': f.stat().st_size / (1024*1024),
+                            'mtime': time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(f.stat().st_mtime)),
+                            'ext': f.suffix.lower()
+                        })
+                except (OSError, PermissionError) as e:
+                    logger.debug(f"无法访问文件 {f}: {e}")
+                    continue
+    return large_files
+
+def is_user_agree(text):
+    """判断用户是否同意清理计划"""
+    agree_keywords = [
+        '同意清理', '确认', '可以执行', '同意', '执行', '开始清理',
+        'yes', 'ok', 'go', 'accept', 'approve', 'clean', 'proceed', '继续', '没问题', '可以', '好', '行'
+    ]
+    text = text.strip().lower()
+    return any(k in text for k in agree_keywords)
+
+def is_cleaning_related(text):
+    """判断用户输入是否与清理计划相关"""
+    cleaning_keywords = [
+        '清理', '删除', '移除', '计划', '路径', '文件', '目录', '文件夹', '磁盘', '空间',
+        '临时', '缓存', '垃圾', '大文件', '重复', '安全', '确认', '禁止', '修改',
+        'clean', 'delete', 'remove', 'plan', 'path', 'file', 'folder', 'disk', 'space',
+        'temp', 'cache', 'junk', 'large', 'duplicate', 'safe', 'confirm', 'forbid', 'modify',
+        '不要删除', '保留', '跳过', '排除', '增加', '减少', '调整'
+    ]
+    text = text.strip().lower()
+    return any(k in text for k in cleaning_keywords)
+
+def ensure_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+def save_conversation_history(history, filename="data/conversation_history.json"):
+    ensure_dir(os.path.dirname(filename))
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+def load_conversation_history(filename="data/conversation_history.json"):
+    if os.path.exists(filename):
+        with open(filename, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+def clear_conversation_history(filename="data/conversation_history.json"):
+    if os.path.exists(filename):
+        os.remove(filename)
+
+def save_code_block(code, lang="py"):
+    ensure_dir("data/ai_code")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    ext = lang if lang else "txt"
+    filename = f"data/ai_code/ai_code_{timestamp}.{ext}"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(code)
+    return filename
+
+# --- AI Plan Command Implementation ---
+def run_ai_plan(args):
+    """使用AI模型生成磁盘清理计划"""
+    logger = app_context["logger"]
+    ai_planner = app_context["ai_planner"]
+    task_manager = app_context["task_manager"]
+    
+    if not ai_planner:
+        logger.error("AI规划服务未初始化，无法生成计划。")
+        print("错误：AI规划服务未初始化。请确保配置了有效的API密钥。")
+        print("请运行 'python test_api_key.py' 检查API密钥设置。")
+        return
+    
+    # 列举所有可用的主模型
+    available_models = ai_planner.get_available_models()
+    if not available_models:
+        logger.error("未找到任何可用的AI模型。")
+        print("错误：未找到任何可用的AI模型。请确保至少配置了一个有效的API密钥。")
+        print("请运行 'python test_api_key.py' 检查API密钥设置。")
+        return
+    print("\n可用的AI主模型:")
+    for m in available_models:
+        print(f"  - {m}")
+    # 列举每个主模型下的具体大模型（如 qwen-turbo、gemini-pro 等）
+    # 这里假设 ai_planner 有 get_model_variants 方法，否则用硬编码
+    model_variants = {
+        "qwen": ["qwen-turbo (推荐/免费)", "qwen-plus", "qwen-max"],
+        "gemini": ["gemini-pro (推荐/免费)", "gemini-1.5-pro", "gemini-1.5-flash"]
+    }
+    print("\n每个主模型下可用的具体大模型:")
+    for m in available_models:
+        print(f"  {m}: {', '.join(model_variants.get(m, ['未知']))}")
+    # 友好提示
+    print("\n如需指定具体大模型，可用 --model-name 参数，例如: --model-name qwen-turbo 或 --model-name gemini-1.5-pro")
+    # 如果指定了模型，则尝试切换到该模型
+    if hasattr(args, 'model') and args.model and args.model not in available_models:
+        logger.warning(f"指定的模型 '{args.model}' 不可用。可用模型: {', '.join(available_models)}")
+        print(f"警告：指定的模型 '{args.model}' 不可用。")
+        print(f"可用的模型: {', '.join(available_models)}")
+        print(f"将使用默认模型: {ai_planner.current_model}")
+    elif hasattr(args, 'model') and args.model:
+        success = ai_planner.set_model(args.model)
+        if not success:
+            logger.warning(f"切换到模型 '{args.model}' 失败。将使用默认模型: {ai_planner.current_model}")
+            print(f"警告：切换到模型 '{args.model}' 失败。将使用默认模型: {ai_planner.current_model}")
+    # 处理具体大模型参数
+    model_name = getattr(args, 'model_name', None)
+    if model_name:
+        print(f"\n将使用您指定的具体大模型: {model_name}")
+        logger.info(f"用户指定具体大模型: {model_name}")
+    else:
+        # 默认用推荐免费模型
+        default_variant = "qwen-turbo" if ai_planner.current_model == "qwen" else "gemini-pro"
+        print(f"\n未指定具体大模型，默认使用推荐免费模型: {default_variant}")
+        model_name = default_variant
+    print(f"\n使用 {ai_planner.current_model.capitalize()} 的 {model_name} 生成清理计划...\n")
+    # 获取用户目标
+    goal = args.goal if hasattr(args, 'goal') and args.goal else "清理C盘，释放磁盘空间，重点关注临时文件、大文件和重复文件。"
+    # 获取扫描路径和排除路径
+    if hasattr(args, 'paths') and args.paths:
+        scan_paths = args.paths.split(',')
+        logger.info(f"用户指定分析路径: {scan_paths}")
+    else:
+        scan_paths = discover_cleanup_dirs()
+        if not scan_paths:
+            # 动态获取系统盘符
+            import os
+            system_drive = os.environ.get('SystemDrive', 'C:') + os.sep
+            scan_paths = [system_drive]
+        logger.info(f"自动发现分析路径: {scan_paths}")
+    exclude_paths = args.exclude.split(',') if hasattr(args, 'exclude') and args.exclude else []
+    logger.info(f"排除路径: {exclude_paths}")
+    # ==== 新增：发现更细致垃圾目录和大文件 ====
+    junk_dirs = discover_junk_dirs()
+    logger.info(f"发现的垃圾目录: {junk_dirs}")
+    large_file_bases = list(set(scan_paths + junk_dirs + [str(Path.home() / 'Downloads'), str(Path.home() / 'Desktop')]))
+    large_files = find_large_files(large_file_bases, min_size_mb=500)
+    logger.info(f"发现的大文件（建议人工确认）: {large_files[:5]} ... 共{len(large_files)}个")
+    # 只提取大文件路径
+    large_file_paths = [f['path'] for f in large_files if 'path' in f]
+    # 组装 scan_result 结构（不再调用 quick_scan，重复/模糊图片先置空）
+    scan_result = {
+        'garbage_dirs': junk_dirs,
+        'large_files': large_file_paths,
+        'duplicate_images': [],
+        'blurry_images': []
+    }
+    context = {
+        "system_info": {
+            "os": "Windows",
+            "free_disk_space_gb": args.free_space if hasattr(args, 'free_space') and args.free_space else 0
+        },
+        "user_preferences": {
+            "keep_files_newer_than_days": args.keep_days if hasattr(args, 'keep_days') and args.keep_days else 30
+        },
+        "scan_paths": scan_paths,
+        "exclude_paths": exclude_paths,
+        "model_name": model_name,
+        "scan_result": scan_result
+    }
+    
+    # 生成计划循环，直到用户确认计划可行
+    plan = None
+    plan_confirmed = False
+    # ==== 多轮上下文记忆持久化 ====
+    history_file = "data/conversation_history.json"
+    conversation_history = load_conversation_history(history_file)
+    # ==== 角色预设 ====
+    role_presets = {
+        "默认": "你是一个磁盘清理智能助手，也能像ChatGPT一样回答各种问题。",
+        "极客助手": "你是极客风格的技术专家，善于用简洁、专业的语言解答各种IT问题。",
+        "Python专家": "你是Python编程专家，擅长代码生成、调试和解释。",
+        "生活顾问": "你是生活小助手，擅长生活建议、健康、理财等领域。"
+    }
+    current_role = "默认"
+    system_prompt = role_presets[current_role]
+    print(f"\n===== 智能清理多轮对话模式 =====\n")
+    print(f"AI 会根据您的目标生成初步清理计划，您可以多次提出修改意见或补充需求。\n")
+    print(f"当您觉得计划满意时，请输入'同意清理'、'确认'、'可以执行'等同意性话语，AI 才会开始执行清理。\n输入'退出'可随时结束对话，不会执行任何清理操作。\n")
+    # 添加初始用户目标到对话历史（如历史为空）
+    if not conversation_history:
+        conversation_history.append({"role": "user", "content": f"我的目标是：{goal}。请根据这个目标生成一个磁盘清理计划。"})
+    while not plan_confirmed:
+        try:
+            print(f"当前目标: {goal}")
+            print("\nAI 正在为您生成清理计划，请稍候...\n")
+            print("候选垃圾目录:", junk_dirs)
+            print("候选大文件:", large_file_paths)
+            print("传递给AI的scan_result:", scan_result)
+            plan = ai_planner.generate_plan(user_goal=goal, current_context=context, conversation_history=conversation_history)
+            print("AI返回的plan:", plan)
+            if not plan:
+                logger.error("生成清理计划失败。")
+                print("错误：生成清理计划失败。请检查API密钥和网络连接。")
+                return
+            # 显示生成的计划
+            print("\n生成的清理计划如下：\n")
+            # 格式化显示计划内容
+            if isinstance(plan, dict) and plan.get("steps"):
+                if len(plan["steps"]) == 0:
+                    print("未发现可清理项，或AI未能生成清理建议。")
+                else:
+                    print("AI 生成的清理计划:")
+                for i, step in enumerate(plan["steps"]):
+                        path = step.get('path', '')
+                        safety = step.get('safety', '')
+                        reason = step.get('reason', '')
+                        print(f"  步骤 {i+1}: 路径: {path}")
+                        print(f"    建议: {safety}")
+                        if reason:
+                            print(f"    理由: {reason}")
+                ai_response = "这是根据您当前需求生成的清理计划。如需调整，请直接回复您的意见。"
+                conversation_history.append({"role": "assistant", "content": ai_response})
+            elif isinstance(plan, dict) and plan.get("error"):
+                print(f"AI未能生成清理建议：{plan.get('error')}")
+            else:
+                print("未发现可清理项，或AI未能生成清理建议。")
+            # 友好提示
+            print("\n如果计划需要修改，请直接输入您的意见或补充需求。")
+            print("如果您同意当前计划，请输入'同意清理'、'确认'、'可以执行'等同意性话语。")
+            print("如需退出，请输入'退出'。\n")
+            # 获取用户输入
+            try:
+                if sys.stdin.isatty():
+                    user_input = input("您的回复: ").strip()
+                    if user_input.lower() == '退出':
+                        logger.info("用户选择退出对话。"); print("对话已结束，未执行任何清理操作。\n"); return
+                    elif user_input.lower() in ["清空记忆", "清空历史", "forget", "clear memory"]:
+                        clear_conversation_history(history_file)
+                        conversation_history = []
+                        print("已清空对话历史。\n")
+                        continue
+                    elif user_input.startswith("你现在扮演") or user_input.startswith("切换角色"):
+                        # 角色切换
+                        role_name = user_input.replace("你现在扮演","").replace("切换角色","").strip()
+                        if role_name in role_presets:
+                            current_role = role_name
+                            system_prompt = role_presets[current_role]
+                            print(f"角色已切换：{current_role}")
+                        else:
+                            print(f"未找到角色预设：{role_name}，可用角色：{list(role_presets.keys())}")
+                        continue
+                    elif user_input.startswith("自定义角色：") or user_input.startswith("自定义角色:"):
+                        # 自定义角色格式：自定义角色：角色名: prompt内容
+                        parts = re.split(r"：|:", user_input, maxsplit=2)
+                        if len(parts) == 3:
+                            role_name = parts[1].strip()
+                            prompt = parts[2].strip()
+                            role_presets[role_name] = prompt
+                            current_role = role_name
+                            system_prompt = prompt
+                            print(f"已添加并切换到自定义角色：{role_name}")
+                        else:
+                            print("自定义角色格式错误，应为：自定义角色：角色名: prompt内容")
+                        continue
+                    elif is_user_agree(user_input):
+                        plan_confirmed = True
+                        logger.info("用户同意清理计划。"); conversation_history.append({"role": "user", "content": user_input})
+                    else:
+                        conversation_history.append({"role": "user", "content": user_input})
+                        logger.info(f"用户反馈: {user_input}")
+                        # 判断用户输入是否与清理相关
+                        if is_cleaning_related(user_input):
+                            print("\nAI 正在根据您的反馈优化清理计划，请稍候...\n")
+                        else:
+                            # 用户输入与清理无关，进行通用聊天（多轮上下文+角色）
+                            print("\nAI 正在回答您的问题，请稍候...\n")
+                            chat_response = ai_planner._call_ai_model(
+                                model_type=ai_planner.current_model,
+                                model_name=ai_planner.model_name,
+                                prompt=None,
+                                system_prompt=system_prompt,
+                                messages=conversation_history
+                            )
+                            if chat_response:
+                                # 代码高亮显示+自动保存
+                                if '```' in chat_response:
+                                    import re
+                                    code_blocks = re.findall(r'```([a-zA-Z]*)([\s\S]+?)```', chat_response)
+                                    for lang, block in code_blocks:
+                                        lang = lang.strip() or "py"
+                                        filename = save_code_block(block.strip(), lang)
+                                        print(f"\033[96m{block.strip()}\033[0m")  # 高亮
+                                        print(f"[代码已自动保存到 {filename}]")
+                                    print(chat_response)
+                                else:
+                                    print(f"AI回复: {chat_response}\n")
+                                conversation_history.append({"role": "assistant", "content": chat_response})
+                            else:
+                                print("抱歉，AI暂时无法回答您的问题。\n")
+                            print("您可以继续提问，或者回到清理计划讨论。")
+                            print("如果您同意当前清理计划，请输入'同意清理'、'确认'等同意性话语。")
+                            print("如需退出，请输入'退出'。\n")
+                            # ==== 自动保存对话历史 ====
+                            save_conversation_history(conversation_history, history_file)
+                            continue  # 跳过重新生成清理计划，继续对话循环
+                else:
+                    logger.info("非交互式环境，自动确认清理计划。")
+                    print("\n非交互式环境检测到，自动确认清理计划。\n")
+                    plan_confirmed = True
+                    conversation_history.append({"role": "user", "content": "我同意清理。"})
+            except EOFError:
+                logger.info("在非交互式环境中无法获取用户输入，自动确认清理计划。")
+                print("\n非交互式环境检测到，自动确认清理计划。\n")
+                plan_confirmed = True
+                conversation_history.append({"role": "user", "content": "我同意清理。"})
+            # ==== 自动保存对话历史 ====
+            save_conversation_history(conversation_history, history_file)
+        except Exception as e:
+            logger.error(f"生成清理计划时发生异常: {e}")
+            print(f"错误：生成清理计划时发生异常: {e}")
+            return
+    
+    # 用户已确认计划可行，询问是否开始执行清理
+    try:
+        # 检查是否在交互式环境中
+        if sys.stdin.isatty():
+            execute_confirm = input("\n是否开始执行清理计划？(yes/no): ").strip().lower()
+            if execute_confirm != 'yes':
+                logger.info("用户选择不执行清理计划。")
+                print("清理计划未执行。")
+                return
+        else:
+            # 非交互式环境，自动跳过执行（仅显示计划）
+            logger.info("非交互式环境，跳过清理计划执行。")
+            print("\n非交互式环境检测到，清理计划已生成但不会自动执行。")
+            print("如需执行，请在交互式环境中重新运行命令。")
+            return
+    except EOFError:
+        logger.info("在非交互式环境中无法确认执行，跳过执行。")
+        print("\n非交互式环境检测到，清理计划已生成但不会自动执行。")
+        print("如需执行，请在交互式环境中重新运行命令。")
+        return
+    
+    # 开始执行清理计划
+    logger.info("用户确认执行清理计划。")
+    print("\n开始执行清理计划...")
+    
+    # 检查是否可以自动执行计划
+    if task_manager and hasattr(task_manager, 'start_ai_planned_task'):
+        try:
+            ai_task_id = task_manager.start_ai_planned_task(user_goal=goal, current_context=context, precomputed_plan=plan)
+            if ai_task_id:
+                print(f"\nAI 规划的任务已启动，ID: {ai_task_id}")
+                print("你可以使用 'progress --type ai' 命令来跟踪进度。")
+            else:
+                print("\n启动AI规划的任务失败。请检查日志。")
+        except Exception as e:
+            logger.error(f"执行清理计划时发生异常: {e}")
+            print(f"错误：执行清理计划时发生异常: {e}")
+    else:
+        logger.warning("任务管理器不可用或缺少start_ai_planned_task方法，无法执行清理计划。")
+        print("\n错误：当前系统配置无法自动执行清理计划。请联系开发人员。")
 
 def run_scan(args):
     """Handles the 'scan' command."""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger: return
-
-    task_manager = check_app_component("task_manager", logger)
-    if not task_manager: return
+    logger = app_context["logger"]
+    task_manager = app_context["task_manager"]
+    
+    if not task_manager:
+        logger.error("任务管理器未初始化，无法扫描。")
+        return
 
     logger.info("开始扫描磁盘...")
-    scan_paths = args.paths.split(',') if args.paths else ["C:\\"] # Default C:\
+    # 动态获取系统盘符作为默认路径
+    import os
+    system_drive = os.environ.get('SystemDrive', 'C:') + os.sep
+    scan_paths = args.paths.split(',') if args.paths else [system_drive]
     exclude_paths = args.exclude.split(',') if args.exclude else []
     logger.info(f"扫描路径: {scan_paths}")
     logger.info(f"排除路径: {exclude_paths}")
@@ -208,33 +577,35 @@ def run_scan(args):
         if not scan_id:
             logger.error("启动扫描失败。")
             return
-        logger.info(f"扫描任务已启动，扫描ID: {scan_id}")
+
+        logger.info(f"扫描任务已启动，ID: {scan_id}")
         print("正在扫描，请稍候...")
 
         # Progress reporting loop (optional, depends on TaskManager implementation)
-        last_percent = -1
-        last_print_time = 0
-        while task_manager.is_scan_active(): # Check if scanning
+        while getattr(task_manager.scanner, '_is_scanning', False): # Check if scanning
             try:
                 progress = task_manager.get_scan_progress()
+                # Example progress: adjust format as needed
                 progress_percent = progress.get('progress', 0) * 100
                 total_items = progress.get('total_items', 0)
                 total_size_gb = progress.get('total_size', 0) / (1024**3)
-                now = time.time()
-                # 只在进度有明显变化或每隔2秒刷新一次
-                if int(progress_percent) != last_percent or now - last_print_time > 2:
-                    sys.stdout.write(f"\r扫描进度: {progress_percent:.2f}% | 已扫描 {total_items} 项 | 总大小: {total_size_gb:.2f} GB")
-                    sys.stdout.flush()
-                    last_percent = int(progress_percent)
-                    last_print_time = now
+                sys.stdout.write(f"\r扫描进度: {progress_percent:.2f}% | 已扫描 {total_items} 项 | 总大小: {total_size_gb:.2f} GB")
+                sys.stdout.flush()
             except Exception as e:
                 logger.warning(f"获取扫描进度时出错: {e}")
                 sys.stdout.write("\r正在扫描...") # Fallback message
                 sys.stdout.flush()
-            time.sleep(1)
+            time.sleep(1) 
+        
         sys.stdout.write("\n") # Newline after progress
         logger.info("扫描完成。")
-
+        
+        # Save scan result to database
+        if task_manager.save_scan_result():
+            logger.info("扫描结果已保存到数据库。")
+        else:
+            logger.warning("保存扫描结果到数据库失败。")
+        
         # Display basic results (optional)
         scan_result = task_manager.get_scan_result(scan_id)
         if scan_result:
@@ -244,18 +615,6 @@ def run_scan(args):
                  print(f"总文件数: {scan_result.total_items}")
             if hasattr(scan_result, 'total_size'):
                  print(f"总大小: {scan_result.total_size / (1024**3):.2f} GB")
-            # 新增：打印所有可清理项的ID汇总
-            cleanable_ids = []
-            if hasattr(scan_result, 'items') and scan_result.items:
-                for item in scan_result.items:
-                    # 假设每个item有is_cleanable和id属性
-                    if getattr(item, 'is_cleanable', False) and hasattr(item, 'id'):
-                        cleanable_ids.append(str(item.id))
-            if cleanable_ids:
-                print("本次扫描所有可清理的ID如下：")
-                print(", ".join(cleanable_ids))
-            else:
-                print("本次扫描未发现可清理项。")
             # Add more result details if needed, e.g., categories, duplicates
         else:
             logger.warning(f"无法获取扫描ID {scan_id} 的结果。")
@@ -269,49 +628,114 @@ def run_scan(args):
         logger.error(f"扫描过程中发生错误: {e}", exc_info=True)
         print(f"扫描失败，请查看日志。")
 
+def get_disk_usage(path=None):
+    """获取磁盘使用情况"""
+    if path is None:
+        # 动态获取系统盘符
+        import os
+        path = os.environ.get('SystemDrive', 'C:') + os.sep
+    usage = psutil.disk_usage(path)
+    return {
+        "total": usage.total,
+        "used": usage.used,
+        "free": usage.free
+    }
+
 def run_clean(args):
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger:
-        print("Logger 未初始化，无法执行清理命令。", file=sys.stderr)
-        return
-    task_manager = check_app_component("task_manager", logger)
+    """Handles the 'clean' command."""
+    # 实现清理命令的逻辑
+    logger = app_context["logger"]
+    task_manager = app_context["task_manager"]
+    
     if not task_manager:
+        logger.error("任务管理器未初始化，无法清理。")
         return
-    scan_id = args.scan_id
-    categories = args.categories.split(',') if args.categories else []
-    create_backup = args.backup
-    logger.info(f"清理任务参数: scan_id={scan_id}, categories={categories}, create_backup={create_backup}")
+    
+    if not args.scan_id:
+        logger.error("未指定扫描ID，无法清理。")
+        return
+    
+    logger.info(f"开始清理，基于扫描ID: {args.scan_id}")
+    categories = args.categories.split(',') if args.categories else None
+    create_backup = not args.no_backup
+
+    # ==== 新增：清理前空间统计 ====
+    # 默认统计C盘，如需支持自定义可扩展
+    before_usage = get_disk_usage()
+    print(f"清理前可用空间: {before_usage['free'] / (1024**3):.2f} GB")
+    # ==========================
+    
     try:
-        clean_task_id = task_manager.start_clean_task(scan_id=scan_id, categories=categories, create_backup=create_backup)
-        if not clean_task_id:
+        task_id = task_manager.start_clean_task(
+            scan_id=args.scan_id,
+            categories=categories,
+            create_backup=create_backup
+        )
+        
+        if not task_id:
             logger.error("启动清理任务失败。")
             return
-        logger.info(f"清理任务已启动，ID: {clean_task_id}")
+            
+        logger.info(f"清理任务已启动，ID: {task_id}")
         print("正在清理，请稍候...")
-        while task_manager.is_clean_active():
+        
+        # Progress reporting loop
+        while getattr(task_manager.cleaner, '_is_cleaning', False):
             try:
                 progress = task_manager.get_clean_progress()
                 progress_percent = progress.get('progress', 0) * 100
-                cleaned_size = progress.get('cleaned_size', 0) / (1024**3)
-                total_size = progress.get('total_size', 0) / (1024**3)
-                sys.stdout.write(f"\r清理进度: {progress_percent:.2f}% | 已清理 {cleaned_size:.2f} GB / {total_size:.2f} GB")
+                cleaned_size_mb = progress.get('cleaned_size', 0) / (1024**2)
+                total_size_mb = progress.get('total_size', 0) / (1024**2)
+                sys.stdout.write(f"\r清理进度: {progress_percent:.2f}% | 已清理: {cleaned_size_mb:.2f} MB / {total_size_mb:.2f} MB")
                 sys.stdout.flush()
             except Exception as e:
                 logger.warning(f"获取清理进度时出错: {e}")
-                sys.stdout.write("\r正在清理...")
+                sys.stdout.write("\r正在清理...") 
                 sys.stdout.flush()
             time.sleep(1)
-        sys.stdout.write("\n")
+            
+        sys.stdout.write("\n") # Newline after progress
         logger.info("清理完成。")
-        clean_task = task_manager.get_clean_task(clean_task_id)
+        
+        # ==== 新增：清理后空间统计 ====
+        after_usage = get_disk_usage()
+        freed = after_usage["free"] - before_usage["free"]
+        print(f"清理后可用空间: {after_usage['free'] / (1024**3):.2f} GB")
+        print(f"本次共释放空间: {freed / (1024**3):.2f} GB")
+        # ==========================
+        
+        # ==== 新增：生成清理前后对比报告 ====
+        try:
+            from services.report_service import ReportService
+            report_service = ReportService(app_context["config"], task_manager.db)
+            # 获取 scan_id
+            scan_id = args.scan_id
+            comparison_report = report_service.generate_comparison_report(scan_id, task_id)
+            if comparison_report:
+                print("\n===== 清理前后对比报告摘要 =====")
+                print(f"清理前总空间: {comparison_report['before_total_size'] / (1024**3):.2f} GB")
+                print(f"清理后总空间: {comparison_report['after_total_size'] / (1024**3):.2f} GB")
+                print(f"释放空间: {comparison_report['total_cleaned_size'] / (1024**3):.2f} GB")
+                print(f"清理前文件数: {comparison_report['before_total_items']}，清理后文件数: {comparison_report['after_total_items']}")
+                print("主要清理类别TOP5:")
+                for cat, size in comparison_report['top_cleaned_categories']:
+                    print(f"  {cat}: {size / (1024**3):.2f} GB")
+                print("详细报告已保存到 reports 目录。\n")
+        except Exception as e:
+            logger.warning(f"生成清理前后对比报告失败: {e}")
+        # ==========================
+        
+        # Display results
+        clean_task = task_manager.get_clean_task(task_id)
         if clean_task:
-            print(f"清理任务ID: {clean_task_id}")
+            print(f"清理任务ID: {task_id}")
             if hasattr(clean_task, 'cleaned_size'):
-                print(f"已清理大小: {getattr(clean_task, 'cleaned_size', 0) / (1024**3):.2f} GB")
-            if hasattr(clean_task, 'backup_id') and getattr(clean_task, 'backup_id', None):
-                print(f"备份ID: {getattr(clean_task, 'backup_id', '')}")
+                print(f"已清理空间: {clean_task.cleaned_size / (1024**2):.2f} MB")
+            if hasattr(clean_task, 'backup_id') and clean_task.backup_id:
+                print(f"备份ID: {clean_task.backup_id}")
         else:
-            logger.warning(f"无法获取清理任务ID {clean_task_id} 的结果。")
+            logger.warning(f"无法获取清理任务ID {task_id} 的结果。")
+            
     except KeyboardInterrupt:
         logger.warning("用户中断清理。")
         if hasattr(task_manager, 'stop_clean_task'):
@@ -323,524 +747,401 @@ def run_clean(args):
 
 def run_restore(args):
     """Handles the 'restore' command."""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger:
-        return
-
-    task_manager = check_app_component("task_manager", logger)
+    logger = app_context["logger"]
+    task_manager = app_context["task_manager"]
+    
     if not task_manager:
+        logger.error("任务管理器未初始化，无法还原备份。")
         return
-
+        
     if not args.backup_id:
         logger.error("未指定备份ID，无法还原。")
-        print("错误：未指定备份ID。请使用 --backup-id <ID> 指定要还原的备份。")
         return
-
+        
     logger.info(f"开始还原备份，ID: {args.backup_id}")
-    print(f"正在尝试从备份 {args.backup_id} 还原...")
-
+    
     try:
         success = task_manager.restore_from_backup(args.backup_id)
         if success:
-            logger.info(f"备份 {args.backup_id} 还原成功。")
-            print(f"备份 {args.backup_id} 已成功还原。")
+            logger.info("备份还原成功。")
+            print("备份已成功还原。")
         else:
-            logger.error(f"备份 {args.backup_id} 还原失败。任务管理器返回失败。")
-            print(f"备份 {args.backup_id} 还原失败。请检查日志以获取更多详细信息。")
+            logger.error("备份还原失败。")
+            print("备份还原失败，请查看日志。")
     except Exception as e:
-        logger.error(f"还原备份 {args.backup_id} 过程中发生错误: {e}", exc_info=True)
-        print(f"还原备份 {args.backup_id} 失败，发生意外错误。请查看日志。")
+        logger.error(f"还原备份过程中发生错误: {e}", exc_info=True)
+        print(f"还原备份失败，请查看日志。")
 
 def run_list_backups(args):
     """Handles the 'list-backups' command."""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger:
-        return
-
-    task_manager = check_app_component("task_manager", logger)
+    logger = app_context["logger"]
+    task_manager = app_context["task_manager"]
+    
     if not task_manager:
+        logger.error("任务管理器未初始化，无法列出备份。")
         return
-
-    logger.info("正在列出所有备份...")
+        
+    logger.info("获取备份列表...")
+    
     try:
         backups = task_manager.list_backups()
         if not backups:
-            print("未找到任何备份。")
-            logger.info("未找到任何备份记录。")
+            print("没有找到备份。")
             return
-
-        print("可用的备份：")
-        for backup_info in backups:
-            # Assuming backup_info is a dictionary or an object with attributes
-            # Adjust the formatting based on what task_manager.list_backups() returns
-            backup_id = getattr(backup_info, 'id', backup_info.get('id', 'N/A'))
-            timestamp = getattr(backup_info, 'timestamp', backup_info.get('timestamp', 'N/A'))
-            size = getattr(backup_info, 'size', backup_info.get('size', 'N/A'))
-            # Convert size to a readable format if it's in bytes
-            if isinstance(size, (int, float)):
-                size_gb = size / (1024**3)
-                size_str = f"{size_gb:.2f} GB"
-            else:
-                size_str = str(size)
-            print(f"  - ID: {backup_id}, 时间: {timestamp}, 大小: {size_str}")
-        logger.info(f"成功列出 {len(backups)} 个备份。")
+            
+        print("\n===== 备份列表 =====\n")
+        for backup in backups:
+            # 假设backup对象有id, timestamp, size等属性
+            backup_id = backup.id if hasattr(backup, 'id') else "未知ID"
+            timestamp = backup.timestamp if hasattr(backup, 'timestamp') else "未知时间"
+            size = backup.size if hasattr(backup, 'size') else 0
+            print(f"备份ID: {backup_id}")
+            print(f"创建时间: {timestamp}")
+            print(f"大小: {size / (1024**2):.2f} MB")
+            print("-------------------")
     except Exception as e:
-        logger.error(f"列出备份时发生错误: {e}", exc_info=True)
-        print("列出备份失败，请查看日志。")
-
-def run_progress(args):
-    """Handles the 'progress' command."""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger:
-        return
-
-    task_manager = check_app_component("task_manager", logger)
-    if not task_manager:
-        return
-
-    progress_type = args.type
-    logger.info(f"正在获取 {progress_type} 任务的进度...")
-
-    try:
-        if progress_type == 'scan':
-            if not task_manager.is_scan_active():
-                print("当前没有正在进行的扫描任务。")
-                logger.info("请求扫描进度，但没有活动扫描任务。")
-                return
-            progress = task_manager.get_scan_progress()
-            progress_percent = progress.get('progress', 0) * 100
-            total_items = progress.get('total_items', 0)
-            total_size_gb = progress.get('total_size', 0) / (1024**3)
-            print(f"扫描进度: {progress_percent:.2f}% | 已扫描 {total_items} 项 | 总大小: {total_size_gb:.2f} GB")
-            logger.info(f"扫描进度: {progress_percent:.2f}%, 项目: {total_items}, 大小: {total_size_gb:.2f} GB")
-        elif progress_type == 'clean':
-            if not task_manager.is_clean_active():
-                print("当前没有正在进行的清理任务。")
-                logger.info("请求清理进度，但没有活动清理任务。")
-                return
-            progress = task_manager.get_clean_progress()
-            progress_percent = progress.get('progress', 0) * 100
-            cleaned_size_gb = progress.get('cleaned_size', 0) / (1024**3)
-            total_size_gb = progress.get('total_size', 0) / (1024**3)
-            print(f"清理进度: {progress_percent:.2f}% | 已清理 {cleaned_size_gb:.2f} GB / {total_size_gb:.2f} GB")
-            logger.info(f"清理进度: {progress_percent:.2f}%, 已清理: {cleaned_size_gb:.2f}GB, 总计: {total_size_gb:.2f}GB")
-        else:
-            # This case should ideally not be reached due to argparse choices
-            logger.error(f"无效的进度类型: {progress_type}")
-            print(f"错误：无效的进度类型 '{progress_type}'。请使用 'scan' 或 'clean'。")
-
-    except Exception as e:
-        logger.error(f"获取 {progress_type} 进度时发生错误: {e}", exc_info=True)
-        print(f"获取 {progress_type} 进度失败，请查看日志。")
+        logger.error(f"获取备份列表时发生错误: {e}", exc_info=True)
+        print(f"无法获取备份列表，请查看日志。")
 
 def run_list_duplicates(args):
     """Handles the 'list-duplicates' command."""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger:
-        return
-
-    task_manager = check_app_component("task_manager", logger)
+    logger = app_context["logger"]
+    task_manager = app_context["task_manager"]
+    
     if not task_manager:
+        logger.error("任务管理器未初始化，无法列出重复文件。")
         return
-
-    scan_id = args.scan_id
-    logger.info(f"正在列出扫描ID {scan_id} 中的重复文件...")
-    print(f"正在查找扫描ID {scan_id} 中的重复文件...")
-
-    try:
-        # Assuming TaskManager has a method like get_duplicate_files(scan_id)
-        # This method should return a list of groups of duplicate files.
-        # Example: [[fileA_path1, fileA_path2], [fileB_path1, fileB_path2, fileB_path3]]
-        if not hasattr(task_manager, 'get_duplicate_files'):
-            logger.error("TaskManager 中缺少 'get_duplicate_files' 方法。无法列出重复文件。")
-            print("错误：此功能当前不可用。")
-            return
-
-        duplicate_groups = task_manager.get_duplicate_files(scan_id)
-
-        if not duplicate_groups:
-            print(f"在扫描ID {scan_id} 中未找到重复文件。")
-            logger.info(f"在扫描ID {scan_id} 中未找到重复文件。")
-            return
-
-        print(f"扫描ID {scan_id} 中的重复文件组：")
-        group_count = 0
-        total_duplicates = 0
-        for i, group in enumerate(duplicate_groups):
-            if len(group) > 1:
-                group_count += 1
-                print(f"  组 {group_count}: (共 {len(group)} 个文件)")
-                # Calculate size of one file in the group (assuming they are identical)
-                # This might require TaskManager to provide size info or an additional call
-                # For simplicity, we'll just list paths here.
-                # If size is available, e.g., from a more detailed duplicate_info object:
-                # first_file_path = group[0]
-                # file_size = os.path.getsize(first_file_path) # This is a basic way, TM might have better
-                # print(f"    大小 (单个文件): {file_size / (1024*1024):.2f} MB")
-                for file_path in group:
-                    print(f"    - {file_path}")
-                    total_duplicates +=1
         
-        if group_count == 0:
-            print(f"在扫描ID {scan_id} 中未找到重复文件组 (每组至少2个文件)。")
-            logger.info(f"在扫描ID {scan_id} 中未找到实际的重复文件组。")
-        else:
-            logger.info(f"成功列出 {group_count} 组重复文件，共 {total_duplicates} 个重复文件条目，来自扫描ID {scan_id}。")
-
-    except FileNotFoundError as e:
-        logger.error(f"列出重复文件时发生文件未找到错误 (扫描ID: {scan_id}): {e}")
-        print(f"错误：找不到与扫描ID {scan_id} 相关的数据或文件。它可能已被删除或损坏。")
-    except Exception as e:
-        logger.error(f"列出扫描ID {scan_id} 的重复文件时发生错误: {e}", exc_info=True)
-        print(f"列出重复文件失败 (扫描ID: {scan_id})。请查看日志。")
-
-# --- AI Plan Command Implementation ---
-def run_ai_plan(args):
-    """使用AI模型生成磁盘清理计划"""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger: return
-
-    ai_planner = check_app_component("ai_planner", logger)
-    if not ai_planner:
-        print("错误：AI规划服务未初始化或初始化失败。可能原因：")
-        print("1. 配置文件 (例如 config/default.yaml) 中缺少AI相关的API密钥设置 (例如 ai.gemini_api_key)。")
-        print("2. AI规划服务在应用程序启动时遇到初始化问题。")
-        print("请检查应用程序日志和配置文件以获取详细信息。")
-        print("如果使用的是Gemini模型，可以尝试运行 'python utils/test_api_key.py' (如果存在) 来测试API密钥。")
+    if not args.scan_id:
+        logger.error("未指定扫描ID，无法列出重复文件。")
         return
-
-    available_models = []
-    if hasattr(ai_planner, 'get_available_models'):
-        try:
-            available_models = ai_planner.get_available_models()
-        except Exception as e:
-            logger.error(f"获取可用AI模型列表失败: {e}")
-            print(f"警告: 获取可用AI模型列表失败: {e}")
-    
-    if not available_models:
-        logger.warning("AI规划器未报告任何可用模型。将尝试使用默认或第一个配置的模型。")
-
-    current_model_display = "默认"
-    if hasattr(ai_planner, 'current_model') and ai_planner.current_model:
-        current_model_display = ai_planner.current_model
-    elif available_models:
-        current_model_display = available_models[0]
-
-    if hasattr(args, 'model') and args.model:
-        if available_models and args.model not in available_models:
-            logger.warning(f"指定的模型 '{args.model}' 不在AI规划器报告的可用模型列表中: {', '.join(available_models)}. 仍会尝试使用。")
-            print(f"警告：指定的模型 '{args.model}' 可能不受当前AI规划器支持。可用: {', '.join(available_models) if available_models else '无明确列表'}")
-            print(f"将尝试使用模型 '{args.model}'。")
-            current_model_display = args.model
-        elif hasattr(ai_planner, 'set_model'):
-            try:
-                success = ai_planner.set_model(args.model)
-                if success:
-                    current_model_display = args.model
-                    logger.info(f"已成功切换到AI模型: {args.model}")
-                else:
-                    logger.warning(f"切换到模型 '{args.model}' 失败 (set_model返回False)。将使用 '{current_model_display}' 模型。")
-                    print(f"警告：切换到模型 '{args.model}' 失败。将使用 '{current_model_display}' 模型。")
-            except Exception as e:
-                logger.error(f"切换到模型 '{args.model}' 时发生错误: {e}")
-                print(f"警告：切换到模型 '{args.model}' 时出错。将使用 '{current_model_display}' 模型。")
-        else:
-             current_model_display = args.model
-             logger.info(f"用户指定模型 '{args.model}'。AI规划器将尝试使用它。")
-
-    print(f"\n使用 {current_model_display.capitalize()} 模型生成清理计划...\n")
-    
-    goal = args.goal if hasattr(args, 'goal') and args.goal else "清理C盘，释放磁盘空间，重点关注临时文件、大文件和重复文件。"
-    
-    default_scan_paths = ["C:\\"] # Corrected
-    if app_context.get("config"):
-        default_scan_paths = app_context["config"].get("scanner.default_scan_paths", ["C:\\"]) # Corrected
-
-    scan_paths = args.paths.split(',') if hasattr(args, 'paths') and args.paths else default_scan_paths
-    exclude_paths = args.exclude.split(',') if hasattr(args, 'exclude') and args.exclude else (app_context["config"].get("scanner.default_exclude_paths", []) if app_context.get("config") else []) # Corrected
-    
-    logger.info(f"AI规划目标: {goal}")
-    logger.info(f"AI分析路径: {scan_paths}")
-    logger.info(f"AI排除路径: {exclude_paths}")
-    
-    context = {
-        "system_info": {
-            "os": sys.platform,
-            "free_disk_space_gb": args.free_space if hasattr(args, 'free_space') and args.free_space is not None else None
-        },
-        "user_preferences": {
-            "keep_files_newer_than_days": args.keep_days if hasattr(args, 'keep_days') and args.keep_days is not None else None
-        },
-        "scan_paths": scan_paths,
-        "exclude_paths": exclude_paths,
-        "current_datetime": datetime.now().isoformat()
-    }
-    
-    logger.debug(f"为AI规划器准备的上下文: {context}")
+        
+    logger.info(f"获取扫描ID {args.scan_id} 的重复文件...")
     
     try:
-        sys.stdout.write("AI正在思考中，请稍候...")
-        sys.stdout.flush()
-        
-        plan = ai_planner.generate_plan(user_goal=goal, current_context=context)
-        
-        sys.stdout.write("\r" + " " * 30 + "\r") 
-        sys.stdout.flush()
-
-        if plan and isinstance(plan, dict) and plan.get("steps"):
-            print("AI 生成的清理计划:")
-            for i, step in enumerate(plan["steps"]):
-                action = step.get('action', '未知动作')
-                description = step.get('description', '')
-                parameters = step.get('parameters', {})
-                print(f"  步骤 {i+1}: {action}")
-                if description:
-                    print(f"    描述: {description}")
-                if parameters:
-                    print(f"    参数: {parameters}")
-
-            # 检查并打印AI的思考过程
-            if "thinking_process" in plan:
-                print("\nAI的思考过程:")
-                # 假设thinking_process是一个字符串或列表，这里简单打印
-                process = plan["thinking_process"]
-                if isinstance(process, list):
-                    for step in process:
-                        print(f"- {step}")
-                else:
-                    print(process)
-
-            # 检查是否可以自动执行计划 (如果Task Manager支持)
+        # 假设task_manager有get_duplicates方法
+        duplicates = task_manager.get_duplicates(args.scan_id) if hasattr(task_manager, 'get_duplicates') else []
+        if not duplicates:
+            print("没有找到重复文件。")
+            return
             
-            task_manager = check_app_component("task_manager", logger)
-            if task_manager and hasattr(task_manager, 'start_ai_planned_task'):
-                confirm_execution = ""
-                try:
-                    confirm_execution = input("\n是否要执行此计划? (yes/no): ").strip().lower()
-                except EOFError:
-                    logger.warning("在非交互式环境中无法确认执行AI计划，默认不执行。")
-                    confirm_execution = "no"
-
-                if confirm_execution == 'yes':
-                    logger.info("用户确认执行AI生成的计划。")
-                    print("正在尝试执行计划...")
-                    ai_task_id = task_manager.start_ai_planned_task(user_goal=goal, current_context=context, precomputed_plan=plan)
-                    if ai_task_id:
-                        print(f"\nAI 规划的任务已启动，ID: {ai_task_id}")
-                        print("你可以使用 'progress --type ai' (如果已实现) 或查看日志来跟踪进度。")
-                    else:
-                        print("\n启动AI规划的任务失败。请检查日志。")
-                else:
-                    logger.info("用户选择不执行AI生成的计划或无法确认。")
-                    print("计划未执行。")
-            else:
-                logger.info("任务管理器不可用或缺少 'start_ai_planned_task' 方法。计划仅供查看。")
-                print("\n注意: 当前配置无法自动执行此计划。计划仅供查看。")
-
-        elif plan and isinstance(plan, dict) and "error" in plan:
-            logger.error(f"AI规划器返回错误: {plan['error']}")
-            print(f"错误：AI规划器无法生成计划: {plan['error']}")
-            if "API key" in plan.get("error", ""):
-                 print("请检查您的AI服务API密钥是否正确配置并且有效。")
-        elif plan is None:
-            logger.error("AI规划器返回了None，表示规划失败或未生成计划。")
-            print("错误：AI规划器未能生成计划 (返回None)。请检查日志以获取详细信息。")
-        else:
-            logger.warning(f"AI规划器未能生成有效的计划或返回了意外的格式: {plan}")
-            print("错误：AI规划器未能生成有效的计划或返回格式无法识别。")
-            print("请检查日志以获取更多信息。如果问题持续，请尝试不同的目标或模型。")
-
-    except KeyboardInterrupt:
-        sys.stdout.write("\r" + " " * 30 + "\r")
-        sys.stdout.flush()
-        logger.warning("用户中断了AI计划生成。")
-        print("\nAI计划生成已由用户中断。")
+        print("\n===== 重复文件列表 =====\n")
+        for i, duplicate_group in enumerate(duplicates, 1):
+            total_size = sum(f.size for f in duplicate_group) if all(hasattr(f, 'size') for f in duplicate_group) else 0
+            print(f"组 {i}: {len(duplicate_group)} 个文件，总大小: {total_size / (1024**2):.2f} MB")
+            for j, file in enumerate(duplicate_group, 1):
+                file_path = file.path if hasattr(file, 'path') else "未知路径"
+                file_size = file.size if hasattr(file, 'size') else 0
+                print(f"  {j}. {file_path} ({file_size / (1024**2):.2f} MB)")
+            print("-------------------")
     except Exception as e:
-        sys.stdout.write("\r" + " " * 30 + "\r")
-        sys.stdout.flush()
-        logger.error(f"运行AI计划时发生错误: {e}", exc_info=True)
-        print(f"错误：生成AI计划时发生意外错误: {e}")
-        print("请检查日志以获取详细信息。")
+        logger.error(f"获取重复文件列表时发生错误: {e}", exc_info=True)
+        print(f"无法获取重复文件列表，请查看日志。")
 
-    except Exception as e:
-        logger.error(f"生成清理计划时发生异常: {e}", exc_info=True)
-        print(f"错误：生成清理计划时发生异常: {e}")
-        # Optionally, attempt fallback to other models if primary fails, similar to original logic if desired.
+def run_schedule(args):
+    """管理自动清理计划"""
+    logger = app_context["logger"]
+    scheduler = app_context["scheduler"]
+    config = app_context["config"]
+    
+    if not scheduler:
+        logger.error("调度器服务未初始化，无法管理自动清理计划。")
+        print("错误：调度器服务未初始化。请确保应用程序正确初始化。")
+        return
+    
+    # 检查是否同时指定了启用和禁用参数
+    if args.enable and args.disable:
+        logger.error("不能同时启用和禁用自动清理。")
+        print("错误：不能同时指定 --enable 和 --disable 参数。")
+        return
+    
+    # 获取当前配置
+    current_enabled = config.get("schedule.auto_clean.enabled", False)
+    current_interval = config.get("schedule.auto_clean.interval_days", 14)
+    current_categories = config.get("schedule.auto_clean.categories", "temp_files,cache_files")
+    
+    # 显示当前状态
+    if not (args.enable or args.disable or args.interval is not None or args.categories):
+        print("当前自动清理计划状态:")
+        print(f"  启用状态: {'已启用' if current_enabled else '已禁用'}")
+        print(f"  清理间隔: {current_interval} 天")
+        print(f"  清理类别: {current_categories}")
+        return
+    
+    # 更新配置
+    changes_made = False
+    
+    # 更新启用/禁用状态
+    if args.enable:
+        config.set("schedule.auto_clean.enabled", True)
+        changes_made = True
+        print("已启用自动清理计划。")
+    elif args.disable:
+        config.set("schedule.auto_clean.enabled", False)
+        changes_made = True
+        print("已禁用自动清理计划。")
+    
+    # 更新清理间隔
+    if args.interval is not None:
+        if args.interval < 1:
+            logger.error("清理间隔必须大于等于1天。")
+            print("错误：清理间隔必须大于等于1天。")
+            return
+        config.set("schedule.auto_clean.interval_days", args.interval)
+        changes_made = True
+        print(f"已将清理间隔设置为 {args.interval} 天。")
+    
+    # 更新清理类别
+    if args.categories:
+        config.set("schedule.auto_clean.categories", args.categories)
+        changes_made = True
+        print(f"已将清理类别设置为: {args.categories}")
+    
+    # 如果进行了更改，重新加载调度器
+    if changes_made:
+        try:
+            # 保存配置
+            config.save_config()
+            # 重新启动调度器以应用新配置
+            if hasattr(scheduler, 'stop') and callable(scheduler.stop):
+                scheduler.stop()
+            if hasattr(scheduler, 'start') and callable(scheduler.start):
+                scheduler.start()
+            print("调度器配置已更新并重新加载。")
+        except Exception as e:
+            logger.error(f"更新调度器配置时出错: {e}")
+            print(f"错误：更新调度器配置时出错: {e}")
 
 def run_service(args):
-    """Handles the 'service' command to run in background mode."""
-    logger = check_app_component("logger", None, is_logger_check=True)
-    if not logger:
-        sys.exit(1) # Critical, cannot run service without logger
-
-    scheduler = check_app_component("scheduler", logger)
+    """Handles the 'service' command."""
+    logger = app_context["logger"]
+    scheduler = app_context["scheduler"]
+    
     if not scheduler:
-        sys.exit(1) # Critical, cannot run service without scheduler
-
-    logger.info("以服务模式启动应用程序...")
-    print("应用程序正在后台服务模式下运行。按 Ctrl+C 停止。")
+        logger.error("调度器未初始化，无法启动服务。")
+        return
+        
+    logger.info("启动后台服务...")
+    print("正在启动后台服务，按Ctrl+C停止...")
     
     try:
-        scheduler.start() # This should block or run in a separate thread
-        # Keep the main thread alive if scheduler.start() is non-blocking
-        # and doesn't have its own keep-alive mechanism.
-        # For a simple console service, scheduler.start() might be blocking.
-        # If it's a true daemon, this part might be different (e.g. using a library like python-daemon)
+        # 启动调度器
+        scheduler.start()
+        
+        # 保持服务运行，直到收到中断信号
         while True:
-            # Periodically update system info if scheduler doesn't do it internally
+            time.sleep(1)
+            # 可以在这里添加定期更新系统信息的代码
             if hasattr(scheduler, 'update_system_info'):
-                 scheduler.update_system_info()
-            time.sleep(60)  # Keep alive, adjust interval as needed
+                scheduler.update_system_info()
     except KeyboardInterrupt:
-        logger.info("收到用户中断信号 (Ctrl+C)，正在停止服务...")
-        print("\n正在停止服务...")
+        logger.info("收到用户中断，停止服务...")
+        print("\n服务已停止。")
     except Exception as e:
-        logger.error(f"服务模式运行时发生意外错误: {e}", exc_info=True)
-        print(f"服务因错误停止。请查看日志。")
+        logger.error(f"服务运行过程中发生错误: {e}", exc_info=True)
+        print(f"服务运行失败，请查看日志。")
     finally:
-        # Cleanup is handled by atexit, but explicit stop for scheduler might be good here
+        # 确保调度器被正确关闭
         if hasattr(scheduler, 'close'):
-            try:
-                scheduler.close()
-                logger.info("调度服务已在服务模式退出时关闭。")
-            except Exception as e:
-                logger.error(f"关闭调度服务时出错: {e}")
-        logger.info("服务模式已停止。")
-        print("服务已停止。")
+            scheduler.close()
 
+# --- GUI Command Implementation ---
+def run_gui(args):
+    """启动图形用户界面"""
+    logger = app_context["logger"]
+    
+    # 目前GUI功能尚未实现，显示提示信息
+    logger.info("GUI功能尚未实现，请等待后续版本更新。")
+    print("图形用户界面功能尚未实现，请等待后续版本更新。")
+    print("您可以继续使用命令行界面操作程序。")
+    return
 
+# --- Rules Command Implementation ---
+def run_rules(args):
+    from core.rules import RuleManager
+    from config.manager import ConfigManager
+    import yaml
+    config = app_context["config"] or ConfigManager()
+    rule_manager = RuleManager(config)
+    if args.action == "list":
+        rules = rule_manager.get_rules(enabled_only=False)
+        print("\n===== 当前清理规则列表 =====\n")
+        for i, r in enumerate(rules, 1):
+            print(f"{i}. 名称: {r.name}")
+            print(f"   匹配: {r.pattern}")
+            print(f"   类别: {r.category}")
+            print(f"   启用: {r.enabled}")
+            print(f"   保留天数: {getattr(r, 'keep_days', '-')}")
+            print(f"   描述: {r.description}")
+            print("-------------------")
+    elif args.action == "add":
+        rule = {
+            "name": args.name,
+            "pattern": args.pattern,
+            "category": args.category or "other",
+            "enabled": not args.disabled,
+            "description": args.description or "",
+            "keep_days": args.keep_days or 0
+        }
+        # 直接写入yaml
+        rules_path = os.path.join("config", "rules.yaml")
+        if os.path.exists(rules_path):
+            with open(rules_path, "r", encoding="utf-8") as f:
+                data = yaml.safe_load(f) or {}
+        else:
+            data = {}
+        data.setdefault("rules", []).append(rule)
+        with open(rules_path, "w", encoding="utf-8") as f:
+            yaml.safe_dump(data, f, allow_unicode=True)
+        print(f"已添加规则: {rule['name']}")
+    elif args.action == "remove":
+        rules_path = os.path.join("config", "rules.yaml")
+        if not os.path.exists(rules_path):
+            print("未找到规则配置文件。"); return
+        with open(rules_path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+        rules = data.get("rules", [])
+        rules = [r for r in rules if r.get("name") != args.name]
+        data["rules"] = rules
+        with open(rules_path, "w", encoding="utf-8") as f:
+            yaml.safe_dump(data, f, allow_unicode=True)
+        print(f"已移除规则: {args.name}")
+    elif args.action == "import":
+        with open(args.file, "r", encoding="utf-8") as f:
+            import_data = yaml.safe_load(f)
+        rules_path = os.path.join("config", "rules.yaml")
+        with open(rules_path, "w", encoding="utf-8") as f:
+            yaml.safe_dump(import_data, f, allow_unicode=True)
+        print(f"已导入规则文件: {args.file}")
+    elif args.action == "export":
+        rules_path = os.path.join("config", "rules.yaml")
+        if not os.path.exists(rules_path):
+            print("未找到规则配置文件。"); return
+        with open(rules_path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+        with open(args.file, "w", encoding="utf-8") as f:
+            yaml.safe_dump(data, f, allow_unicode=True)
+        print(f"已导出规则到: {args.file}")
+    else:
+        print("未知规则操作。支持: list, add, remove, import, export")
 
 def main():
-    # 首先初始化应用程序，以便日志记录器可用于后续操作
-    if not initialize_app():
-        sys.exit(1)
+    # Register signal handlers for graceful shutdown
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
 
-    # 初始化后获取日志记录器实例
-    logger = app_context.get("logger")
+    # UI functionality has been removed as it was only placeholder code
+    # return # Exit after UI closes
 
-    parser = argparse.ArgumentParser(description='C盘清理工具')
-    subparsers = parser.add_subparsers(dest='command', help='可用命令', required=False) # 'required=False' to handle no command case gracefully
-
-    # 扫描命令
-    scan_parser = subparsers.add_parser('scan', help='扫描磁盘')
-    scan_parser.add_argument('--paths', type=str, help='要扫描的路径，多个路径用逗号分隔')
-    scan_parser.add_argument('--exclude', type=str, help='排除的路径，多个路径用逗号分隔')
-    scan_parser.set_defaults(func=run_scan)
-
-    # 清理命令
-    clean_parser = subparsers.add_parser('clean', help='清理磁盘')
-    clean_parser.add_argument('--scan-id', type=str, required=True, help='要清理的扫描ID')
-    clean_parser.add_argument('--categories', type=str, help='要清理的类别，多个类别用逗号分隔')
-    clean_parser.add_argument('--backup', action='store_true', help='清理前是否创建备份')
-    clean_parser.set_defaults(func=run_clean)
-
-    # 还原命令
-    restore_parser = subparsers.add_parser('restore', help='从备份还原')
-    restore_parser.add_argument('--backup-id', type=str, required=True, help='备份ID')
-    restore_parser.set_defaults(func=run_restore)
-
-    # 备份列表命令
-    backups_parser = subparsers.add_parser('list-backups', help='列出所有备份')
-    backups_parser.set_defaults(func=run_list_backups)
-
-    # 进度命令
-    progress_parser = subparsers.add_parser('progress', help='查看当前任务进度')
-    progress_parser.add_argument('--type', type=str, choices=['scan', 'clean'], required=True, help='进度类型')
-    progress_parser.set_defaults(func=run_progress)
-
-    # 列出重复文件命令
-    list_duplicates_parser = subparsers.add_parser("list-duplicates", help="列出指定扫描中的重复文件")
-    list_duplicates_parser.add_argument("--scan-id", required=True, help="要查找重复文件的扫描ID")
-    list_duplicates_parser.add_argument('--min-size', type=int, default=1024*1024, help='重复文件的最小大小 (字节), 默认1MB')
-    list_duplicates_parser.set_defaults(func=run_list_duplicates)
-
-    # 服务命令
-    service_parser = subparsers.add_parser("service", help="以持续运行的后台服务模式启动")
-    service_parser.set_defaults(func=run_service)
     
-    # AI规划命令
+    # --- Main Argument Parser ---
+    # If not launching UI, proceed with CLI argument parsing
+    parser = argparse.ArgumentParser(description="C盘清理工具", prog="c_disk_cleaner")
+    subparsers = parser.add_subparsers(dest="command", help="可用命令")
+    
+    # scan命令
+    scan_parser = subparsers.add_parser("scan", help="扫描磁盘并分析空间使用情况")
+    scan_parser.add_argument("--paths", help="要扫描的路径，用逗号分隔 (默认: 系统盘)")
+    scan_parser.add_argument("--exclude", help="要排除的路径，用逗号分隔")
+    scan_parser.set_defaults(func=run_scan)
+    
+    # clean命令
+    clean_parser = subparsers.add_parser("clean", help="清理磁盘空间")
+    clean_parser.add_argument("--scan-id", help="要使用的扫描ID (默认: 最新的扫描)")
+    clean_parser.add_argument("--categories", help="要清理的文件类别，用逗号分隔 (例如: temp,large,duplicate)")
+    clean_parser.add_argument("--no-backup", action="store_true", help="不创建备份")
+    clean_parser.set_defaults(func=run_clean)
+    
+    # restore命令
+    restore_parser = subparsers.add_parser("restore", help="从备份恢复文件")
+    restore_parser.add_argument("--backup-id", required=True, help="要恢复的备份ID")
+    restore_parser.set_defaults(func=run_restore)
+    
+    # list-backups命令
+    list_backups_parser = subparsers.add_parser("list-backups", help="列出可用的备份")
+    list_backups_parser.set_defaults(func=run_list_backups)
+    
+    # list-duplicates命令
+    list_duplicates_parser = subparsers.add_parser("list-duplicates", help="列出重复文件")
+    list_duplicates_parser.add_argument("--scan-id", help="要使用的扫描ID (默认: 最新的扫描)")
+    list_duplicates_parser.add_argument("--min-size", type=int, default=1, help="最小文件大小 (MB) (默认: 1)")
+    list_duplicates_parser.add_argument("--output", help="输出结果到文件")
+    list_duplicates_parser.set_defaults(func=run_list_duplicates)
+    
+    # ai-plan命令
     ai_plan_parser = subparsers.add_parser("ai-plan", help="使用AI生成磁盘清理计划")
-    ai_plan_parser.add_argument("--model", type=str, choices=["gemini", "qwen", "wenxin"], 
+    ai_plan_parser.add_argument("--model", choices=["gemini", "qwen", "wenxin"], 
                               help="要使用的AI模型 (默认: 使用第一个可用的模型)")
-    ai_plan_parser.add_argument("--goal", type=str, default="清理C盘，释放磁盘空间，重点关注临时文件、大文件和重复文件。", help="清理目标描述 (默认: 清理C盘，释放磁盘空间)")
+    ai_plan_parser.add_argument("--model-name", help="指定更细致的AI底层模型（如 qwen-turbo, gemini-pro 等）")
+    ai_plan_parser.add_argument("--goal", help="清理目标描述 (默认: 清理C盘，释放磁盘空间)")
     ai_plan_parser.add_argument("--free-space", type=int, help="期望释放的空间大小 (GB)")
     ai_plan_parser.add_argument("--keep-days", type=int, default=30, help="保留多少天内的文件 (默认: 30)")
     ai_plan_parser.add_argument("--paths", help="要分析的路径，多个路径用英文逗号分隔，默认C盘根目录。")
     ai_plan_parser.add_argument("--exclude", help="排除的路径，多个路径用英文逗号分隔。")
     ai_plan_parser.set_defaults(func=run_ai_plan)
-    args = parser.parse_args() # Ensure this is after all subparsers are added
+    
+    # schedule命令
+    schedule_parser = subparsers.add_parser("schedule", help="管理自动清理计划")
+    schedule_parser.add_argument("--enable", action="store_true", help="启用自动清理")
+    schedule_parser.add_argument("--disable", action="store_true", help="禁用自动清理")
+    schedule_parser.add_argument("--interval", type=int, help="自动清理间隔 (天)")
+    schedule_parser.add_argument("--categories", help="要清理的文件类别，用逗号分隔")
+    schedule_parser.set_defaults(func=run_schedule)
+    
+    # gui命令
+    gui_parser = subparsers.add_parser("gui", help="启动图形用户界面")
+    gui_parser.set_defaults(func=run_gui)
+    
+    # rules命令
+    rules_parser = subparsers.add_parser("rules", help="管理清理规则")
+    rules_parser.add_argument("action", choices=["list", "add", "remove", "import", "export"], help="操作类型")
+    rules_parser.add_argument("--name", help="规则名称 (add/remove)")
+    rules_parser.add_argument("--pattern", help="匹配模式 (add)")
+    rules_parser.add_argument("--category", help="文件类别 (add)")
+    rules_parser.add_argument("--disabled", action="store_true", help="添加时禁用规则 (add)")
+    rules_parser.add_argument("--description", help="规则描述 (add)")
+    rules_parser.add_argument("--keep-days", type=int, help="保留天数 (add)")
+    rules_parser.add_argument("--file", help="导入/导出文件路径 (import/export)")
+    rules_parser.set_defaults(func=run_rules)
+    
+    # 解析命令行参数
+    args = parser.parse_args()
+    
+    # 初始化应用程序
     if not initialize_app():
-        sys.exit(1) # Exit if initialization fails
-    signal.signal(signal.SIGINT, signal_handler)
-    signal.signal(signal.SIGTERM, signal_handler)
-    atexit.register(cleanup_app)
-
-    # 如果没有提供任何命令，则打印帮助信息并退出
-    if len(sys.argv) == 1:
-        print("\n欢迎使用C盘清理工具！\n")
-        parser.print_help()
-        print("\n示例用法：")
-        print("  python app.py scan --paths C:\\,D:\\ --exclude C:\\Windows")
-        print("  python app.py clean --scan-id <SCAN_ID> --categories 临时文件,日志 --backup")
-        print("  python app.py restore --backup-id <BACKUP_ID>")
-        print("  python app.py list-backups")
-        print("  python app.py list-duplicates --scan-id <SCAN_ID>")
-        print("  python app.py progress --type scan")
-        print("  python app.py service")
-        sys.exit(0)
-
-    try:
-        args = parser.parse_args()
-        if logger:
-            logger.info(f"执行命令: {args.command}，参数: {vars(args)}")
-        
-        if hasattr(args, 'func') and args.func is not None:
-            if logger:
-                logger.info(f"准备分发到处理函数: {args.func.__name__} (命令: '{args.command}')")
-            args.func(args)
-        elif args.command:
-             if logger: logger.error(f"未知或未处理的命令: {args.command}")
-             parser.print_help()
-             sys.exit(1)
-        else:
-            # Should be caught by len(sys.argv) == 1, but as a fallback:
-            parser.print_help()
-            sys.exit(0)
-
-    except argparse.ArgumentError as e:
-        if logger:
-            logger.error(f"命令行参数错误: {e}")
-        print(f"参数错误: {e}", file=sys.stderr)
-        # Attempt to print help for the specific sub-command if possible
-        # This is a bit tricky as 'e' doesn't directly give subparser name
-        # For now, print general help.
-        parser.print_help(file=sys.stderr)
-        sys.exit(1)
-    except Exception as e:
-        command_name = "未知"
-        # Check if args is defined and has command attribute
-        # args might not be defined if parsing failed very early
-        parsed_args = None
-        try: parsed_args = parser.parse_known_args()[0] # Try to get command if possible
-        except: pass
-        if parsed_args and hasattr(parsed_args, 'command'):
-            command_name = parsed_args.command
-        
-        if logger:
-            logger.error(f"执行命令 '{command_name}' 时发生意外错误: {e}", exc_info=True)
-        else:
-            print(f"执行命令 '{command_name}' 时发生意外错误: {e}", file=sys.stderr)
-            import traceback
-            traceback.print_exc(file=sys.stderr)
-
         if MODULE_ERROR:
-            print(f"另外，检测到初始模块加载错误: {MODULE_ERROR}", file=sys.stderr)
+            print(f"错误：无法导入必要的模块: {MODULE_ERROR}", file=sys.stderr)
             print("请确保所有依赖已安装并且项目结构正确。", file=sys.stderr)
-        
-        print(f"程序因意外错误终止。请检查日志获取详细信息。", file=sys.stderr)
-        sys.exit(1)
+        else:
+            print("应用程序初始化失败，请查看日志。", file=sys.stderr)
+        return 1
+    
+    try:
+        # 如果没有指定命令，显示帮助信息
+        if not args.command:
+            parser.print_help()
+            return 0
+            
+        # 执行对应的命令处理函数
+        if hasattr(args, 'func'):
+            args.func(args)
+        else:
+            print(f"未知命令: {args.command}")
+            parser.print_help()
+            return 1
+            
+        return 0
+    except Exception as e:
+        logger = app_context.get("logger")
+        if logger:
+            logger.error(f"执行命令时发生错误: {e}", exc_info=True)
+        print(f"执行命令时发生错误: {e}", file=sys.stderr)
+        return 1
+    finally:
+        # 清理资源
+        cleanup_app()
 
 if __name__ == "__main__":
-    # atexit 已在文件顶部导入并注册
-    main()
+    sys.exit(main())
+
 

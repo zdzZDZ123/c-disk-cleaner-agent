@@ -1,108 +1,127 @@
-# C盘清理工具
+# C Disk Cleaner
 
-## 功能简介
+An intelligent Windows C drive cleaning tool with AI-assisted analysis, multi-turn dialogue, automatic backup, and scheduled cleaning.
 
-- 智能扫描磁盘空间，自动识别可清理文件
-- 支持自定义扫描路径、排除规则和清理参数
-- **AI智能规划（实验性）**：通过AI大模型（默认Qwen，备选Gemini）自动分析磁盘空间并生成清理建议
-- 支持备份与还原，保障数据安全
-- **自动适配本机下载目录**：AI规划会自动检测本机的下载目录（如 `C:\Users\你的用户名\Downloads`），不会再出现路径不存在的问题
+## Features (2024)
 
-## 快速开始
+- 🤖 **AI-Powered Multi-Model Planning**
+  - Supports both Qwen (Alibaba) and Google Gemini AI models
+  - Multi-turn natural language dialogue for cleaning plan optimization
+  - Automatic model switching (VPN/region aware)
+  - Each file is analyzed and marked as `safe` (auto-clean), `confirm` (manual), or `forbid` (never delete)
+  - AI auto-adapts to local directories (Downloads, Desktop, etc.)
 
-1. 安装依赖
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. 配置API密钥（AI功能需配置Qwen或Gemini的API密钥，推荐优先Qwen）
-   - Windows PowerShell:
-     ```powershell
-     $env:QWEN_API_KEY="您的Qwen API密钥"
-     $env:GEMINI_API_KEY="您的Gemini API密钥"
-     ```
-   - Windows CMD:
-     ```cmd
-     set QWEN_API_KEY=您的Qwen API密钥
-     set GEMINI_API_KEY=您的Gemini API密钥
-     ```
-   - 或编辑`config/default.yaml`:
-     ```yaml
-     ai:
-       qwen_api_key: "您的Qwen API密钥"
-       gemini_api_key: "您的Gemini API密钥"
-     ```
-3. 测试API密钥有效性（推荐）
-   ```bash
-   python test_api_key.py --model qwen
-   python test_api_key.py --model gemini
-   ```
-4. 执行清理
-   ```bash
-   python app.py scan --paths C:\Users\你的用户名\Downloads
-   python app.py clean --scan-id 1
-   ```
-5. 使用AI智能规划（实验性）
-   ```bash
-   python app_new.py ai-plan --goal "清理C盘，释放空间"
-   python app_new.py ai-plan --model gemini --goal "清理D盘"
-   ```
+- 🔍 **Smart Scanning & Analysis**
+  - Auto-discover system junk, temp, browser cache, IM/download/game caches
+  - Large file and duplicate file detection and grouping
+  - Custom scan/exclude paths, retention days
 
-## 命令行参数说明
+- 🧹 **Safe Cleaning & Backup**
+  - Automatic backup before cleaning, one-click restore
+  - System temp, browser cache, downloads, recycle bin cleaning
+  - Custom cleaning rules via `config/rules.yaml`
 
-- `--model`：指定AI模型（qwen/gemini），默认优先qwen
-- `--goal`：清理目标描述（默认：清理C盘，释放磁盘空间）
-- `--keep-days`：保留多少天内的文件（默认30天）
-- `--paths`：要分析的路径，多个路径用英文逗号分隔，默认C盘根目录
-- `--no-backup`：清理时不创建备份（默认创建备份）
+- 📊 **Reports & Statistics**
+  - Before/after space comparison, auto space freed report
+  - Detailed cleaning reports, exportable history
 
-## AI清理流程与用户交互
+- ⏰ **Automation & Scheduling**
+  - Scheduled auto-cleaning (configurable interval, categories)
+  - Full/partial automation via CLI
 
-- 用户通过`ai-plan`命令输入清理目标，系统自动调用Qwen（默认）或Gemini生成详细清理计划。
-- 计划生成后，系统会展示每一步操作，用户需确认后才会执行实际清理，确保安全。
-- 支持自定义扫描路径、排除规则和保留天数，提升灵活性。
-- 所有清理操作默认创建备份，用户可随时还原。
-- **AI规划会自动适配本机下载目录，避免路径不存在问题。**
+- 🛠️ **Robust CLI & Logging**
+  - Rich command-line interface: `scan`, `clean`, `ai-plan`, `restore`, `list-backups`, `list-duplicates`, `schedule`, `rules`
+  - Detailed logs and error messages for troubleshooting
+  - API key validity test script
 
-## 常见错误及排查建议
+## Installation
 
-- **网络连接失败**：请确保本机网络可访问阿里云（Qwen）或Google（Gemini）API服务。
-- **API密钥无效**：请检查API密钥是否正确填写、未过期，建议用`python test_api_key.py --model qwen`或`--model gemini`测试。
-- **未配置API密钥**：请在环境变量或config/default.yaml中设置至少一个API密钥。
-- **模型不可用**：如Qwen不可用会自动切换Gemini，建议优先配置Qwen。
-- **API调用失败**：请查看日志详细错误信息，常见原因包括密钥错误、网络问题、配额限制等。
-
-## 注意事项
-- Qwen需能访问阿里云服务，Gemini需能访问Google服务
-- API密钥为敏感信息，请妥善保管
-- 若一个模型无法生成有效计划，可切换到另一个模型（如加`--model gemini`）
-- 详细日志可帮助定位问题
-- AI清理计划每一步均需用户确认，避免误删重要文件
-
-如遇问题请优先检查API密钥和网络环境，更多信息见日志和test_api_key.py输出。
-
-## 目录结构
-
+1. Clone the repository:
+```bash
+git clone https://github.com/zdzZDZ123/c_disk_cleaner_agent.git
+cd c_disk_cleaner_agent
 ```
-├── app.py                # 主程序入口
-├── app_new.py            # 新版AI规划入口
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Configure API keys (Qwen and/or Gemini):
+   - In `config/default.yaml` or via environment variables:
+     ```bash
+     $env:QWEN_API_KEY="your_qwen_api_key"
+     $env:GEMINI_API_KEY="your_gemini_api_key"
+     ```
+
+## Usage Examples
+
+- Basic usage:
+  ```bash
+  python app.py
+  ```
+- AI planning (multi-turn):
+  ```bash
+  python app.py ai-plan
+  ```
+- Scan specific path:
+  ```bash
+  python app.py scan --paths C:\Users\YourName\Downloads
+  ```
+- Clean with scan ID:
+  ```bash
+  python app.py clean --scan-id 1
+  ```
+- List backups/duplicates:
+  ```bash
+  python app.py list-backups
+  python app.py list-duplicates --scan-id 1
+  ```
+- Schedule auto-clean:
+  ```bash
+  python app.py schedule --enable --interval 14 --categories temp_files,cache_files
+  ```
+- Test API keys:
+  ```bash
+  python test_api_key.py --model qwen
+  python test_api_key.py --model gemini
+  ```
+
+## AI Planning & Safety
+- Users interact with AI via `ai-plan` command, multi-turn dialogue supported
+- Each cleaning step requires user confirmation before execution (prevents accidental deletion)
+- All cleaning operations create backups by default, one-click restore supported
+- AI auto-adapts to your system's actual directories
+
+## Configuration
+- API keys: `config/default.yaml` or environment variables
+- Cleaning rules: `config/rules.yaml`
+- Scheduling: via `schedule` command or config
+
+## Troubleshooting & Quota
+- **API Quota Exceeded (429)**: If you see `RESOURCE_EXHAUSTED` or 429 errors, your API quota is used up. Check your Google/Aliyun console for quota/billing, or wait for reset.
+- **Network/API Key Issues**: Ensure network access to Aliyun/Google, and API keys are valid (use `test_api_key.py`)
+- **Logs**: See `logs/app.log` for detailed error info
+
+## Directory Structure
+```
+├── app.py                # Main program entry
 ├── config/
-│   ├── default.yaml      # 默认配置
 ├── data/
-│   ├── models.py         # 数据模型
 ├── services/
-│   ├── ai_planner.py     # AI规划服务
-│   ├── logger.py         # 日志服务
-├── test_api_key.py       # API密钥测试脚本
+├── core/
+├── test_api_key.py       # API key test script
 ├── README.md
-├── README_AI_PLAN.md     # AI规划功能详细说明
 └── requirements.txt
 ```
 
-## 依赖
+## Dependencies
 - Python 3.8+
 - requests
 - loguru
-- google-generativeai>=0.5.0（仅Gemini模型需要）
+- google-generativeai>=0.5.0 (for Gemini)
 
-## 贡献与反馈
-欢迎提交issue或PR改进本项目。
+## License
+MIT
+
+## Contact
+- Project: https://github.com/zdzZDZ123/c_disk_cleaner_agent
+- Issues: https://github.com/zdzZDZ123/c_disk_cleaner_agent/issues

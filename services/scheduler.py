@@ -138,7 +138,10 @@ class SchedulerService:
         """
         try:
             # 获取C盘信息
-            c_disk = psutil.disk_usage("C:\\")
+            # 动态获取系统盘符
+            import os
+            system_drive = os.environ.get('SystemDrive', 'C:') + os.sep
+            c_disk = psutil.disk_usage(system_drive)
             
             # 获取内存信息
             memory = psutil.virtual_memory()
@@ -373,4 +376,4 @@ class SchedulerService:
         self.stop()
         if self.task_manager:
             self.task_manager.close()
-        logger.info("调度器服务已关闭") 
+        logger.info("调度器服务已关闭")

@@ -16,19 +16,58 @@ general:
 # 扫描设置
 scanner:
   exclude_dirs:                      # 排除扫描的目录
-    - "C:\\Windows"
-    - "C:\\Program Files"
-    - "C:\\Program Files (x86)"
+    - "C:\\Windows\\System32"
+    - "C:\\Windows\\SysWOW64"
+    - "C:\\Program Files\\Windows NT"
+    - "C:\\Program Files (x86)\\Windows NT"
+    - "C:\\$Recycle.Bin"
+    - "C:\\System Volume Information"
   include_dirs:                      # 默认包含扫描的目录
     - "C:\\Users"
     - "C:\\Temp"
+    - "C:\\Windows\\Temp"
+    - "C:\\Windows\\Logs"
+    - "C:\\Windows\\SoftwareDistribution\\Download"
+    - "C:\\ProgramData"
+    - "C:\\Program Files"
+    - "C:\\Program Files (x86)"
   recursive: true                    # 是否递归扫描子目录
   follow_links: false                # 是否跟踪符号链接
-  skip_hidden: true                  # 是否跳过隐藏文件
-  max_depth: 10                      # 最大扫描深度
+  skip_hidden: false                 # 扫描隐藏文件以发现更多垃圾
+  max_depth: 15                      # 增加最大扫描深度
   # 新增：重复文件扫描设置
   find_duplicates: true              # 是否查找重复文件
   duplicate_min_size_mb: 1           # 查找重复文件的最小大小(MB)
+  # 扩展文件类型支持
+  file_types:
+    temp_files:                      # 临时文件扩展
+      - "*.tmp"
+      - "*.temp"
+      - "*.bak"
+      - "*.old"
+      - "*.orig"
+      - "~*"
+      - "*.swp"
+      - "*.swo"
+    log_files:                       # 日志文件
+      - "*.log"
+      - "*.log.*"
+      - "*.out"
+      - "*.err"
+    cache_files:                     # 缓存文件
+      - "*.cache"
+      - "*.cached"
+      - "thumbs.db"
+      - "desktop.ini"
+    download_files:                  # 下载文件
+      - "*.part"
+      - "*.crdownload"
+      - "*.download"
+    system_files:                    # 系统垃圾文件
+      - "*.dmp"
+      - "*.mdmp"
+      - "*.chk"
+      - "*.gid"
 
 # 清理规则
 rules:
@@ -39,7 +78,48 @@ rules:
       - "*.temp"
       - "~*"
       - "*.bak"
+      - "*.old"
+      - "*.orig"
+      - "*.swp"
+      - "*.swo"
     scan_only: true              # 默认只扫描，不自动删除
+  log_files:                         # 日志文件清理
+    enabled: true
+    patterns:
+      - "*.log"
+      - "*.log.*"
+      - "*.out"
+      - "*.err"
+    scan_only: true
+  system_cache:                      # 系统缓存清理
+    enabled: true
+    patterns:
+      - "*.cache"
+      - "*.cached"
+      - "thumbs.db"
+      - "desktop.ini"
+      - "*.dmp"
+      - "*.mdmp"
+    scan_only: true
+  download_temp:                     # 下载临时文件
+    enabled: true
+    patterns:
+      - "*.part"
+      - "*.crdownload"
+      - "*.download"
+      - "*.tmp"
+    scan_only: true
+  development_cache:                 # 开发工具缓存
+    enabled: true
+    patterns:
+      - "node_modules"
+      - ".git/objects"
+      - "__pycache__"
+      - "*.pyc"
+      - "*.pyo"
+      - ".gradle/caches"
+      - ".m2/repository"
+    scan_only: true
   browser_cache:                     # 浏览器缓存清理
     enabled: true
     chrome:

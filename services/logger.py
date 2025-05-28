@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -78,88 +78,58 @@ class DatabaseHandler:
 class LoggerService:
     """日志服务类，处理日志的收集、记录和查询"""
     
-    def __init__(self, config_manager=None, database=None):
+    def __init__(self, log_file: str = "logs/app.log"):
         """初始化日志服务
         
         Args:
-            config_manager: 配置管理器实例，如果为None则创建新实例
-            database: 数据库实例，如果为None则创建新实例
+            log_file: 日志文件路径
         """
-        self.config = config_manager or ConfigManager()
-        self.db = database or Database()
-        self.db_handler = None
-        self.setup_logger()
-    
-    def setup_logger(self):
-        """设置日志服务"""
-        # 创建日志目录
-        log_dir = Path.home() / ".c_disk_cleaner" / "logs"
-        log_dir.mkdir(exist_ok=True, parents=True)
-        
-        # 移除所有日志处理器
+        os.makedirs(os.path.dirname(log_file), exist_ok=True)
         logger.remove()
-        
-        # 获取日志级别
-        log_level = self.config.get('logging.level', 'INFO')
-        
-        # 添加控制台处理器
-        if self.config.get('logging.console.enabled', True):
-            logger.add(
-                sys.stderr,
-                level=log_level,
-                format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
-            )
-        
-        # 添加文件处理器
-        if self.config.get('logging.file.enabled', True):
-            log_file = log_dir / "app_{time}.log"
-            logger.add(
-                str(log_file),
-                rotation=self.config.get('logging.file.rotation', '10 MB'),
-                retention=self.config.get('logging.file.retention', '1 week'),
-                level=log_level,
-                encoding='utf-8'
-            )
-        
-        # 添加数据库处理器
-        if self.config.get('logging.database.enabled', False):
-            self.db_handler = DatabaseHandler(self.db)
-            logger.add(
-                self.db_handler.write,
-                level=log_level
-            )
+        logger.add(sys.stdout, level="INFO", colorize=True, enqueue=True)
+        logger.add(log_file, rotation="10 MB", retention="10 days", encoding="utf-8", enqueue=True)
+        self.logger = logger
     
-    def get_logger(self, name=None):
-        """获取日志记录器
+    def info(self, msg: str):
+        """记录信息日志
+        
         Args:
-            name: 日志记录器名称，可选
-        Returns:
-            logger: 日志记录器实例
+            msg: 日志消息
         """
-        return logger
-    
-    def close(self):
-        """关闭日志服务，释放资源"""
-        if self.db_handler:
-            self.db_handler.close()
+        self.logger.info(msg)
+
+    def warning(self, msg: str):
+        """记录警告日志
+        
+        Args:
+            msg: 日志消息
+        """
+        self.logger.warning(msg)
+
+    def error(self, msg: str):
+        """记录错误日志
+        
+        Args:
+            msg: 日志消息
+        """
+        self.logger.error(msg)
+
+    def debug(self, msg: str):
+        """记录调试日志
+        
+        Args:
+            msg: 日志消息
+        """
+        self.logger.debug(msg)
 
 
 # 简单测试
 if __name__ == "__main__":
     # 创建日志服务
     log_service = LoggerService()
-    log = log_service.get_logger()
     
     # 测试日志
-    log.debug("这是一条调试日志")
-    log.info("这是一条信息日志")
-    log.warning("这是一条警告日志")
-    log.error("这是一条错误日志")
-    log.critical("这是一条严重错误日志")
-    
-    # 测试带上下文的日志
-    task_logger = log.bind(task_id="test-task-001")
-    task_logger.info("这是一条带任务ID的日志")
-    
-    # 关闭日志服务
-    log_service.close()
+    log_service.info("这是一条信息日志")
+    log_service.warning("这是一条警告日志")
+    log_service.error("这是一条错误日志")
+    log_service.debug("这是一条调试日志")
